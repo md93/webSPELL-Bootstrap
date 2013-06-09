@@ -35,8 +35,9 @@ $index_language = $_language->module;
 // end important data include
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="description" content="Clanpage using webSPELL 4 CMS" />
 <meta name="author" content="webspell.org" />
@@ -46,9 +47,9 @@ $index_language = $_language->module;
 
 <!-- Head & Title include -->
 <title><?php echo PAGETITLE; ?></title>
+<link href="css/style.css" rel="stylesheet" />
 <link href="css/bootstrap.css" rel="stylesheet" />
 <link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet" type="text/css" />
 <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="js/bootstrap.js" language="jscrip" type="text/javascript"></script>
@@ -59,36 +60,34 @@ $index_language = $_language->module;
 <body>
 <div class="ws_main_wrapper">
     
-    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
+                
+                <a class="brand" href="index.php"><?php echo $myclanname ?></a>
                 
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-        
-        <a class="brand" href="index.php"><?php echo $myclanname ?></a>
                 
                 <div class="nav-collapse collapse"> 
                     <?php include("navigation.php"); ?>
                     
-                    <div class="navbar-form pull-right">
-                        <?php include("quicksearch.php"); ?>
-                    </div>
+                    <?php include("quicksearch.php"); ?>
                 </div>
-            </div>
-        </div>
-    </div>
+                
+            </div><!-- container -->
+        </div><!-- navbar-inner -->
+    </div><!-- navbar navbar-inverse navbar-fixed-top -->
     
     <div class="container">
         
         <div class="hero-unit">
             <h1>webSPELL Bootstrap</h1>
             <p>Free Template, build by you.</p>
-            <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-primary btn-large">View on GitHub</a></p>
+            <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-primary btn-large">» View on GitHub</a></p>
         </div>
     
         <div class="row">
