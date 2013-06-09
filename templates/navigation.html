@@ -1,26 +1,21 @@
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">%main%</a></li>
-    <li><a href="#clan" data-toggle="tab">%clan%</a></li>
-    <li><a href="#community" data-toggle="tab">%community%</a></li>
-    <li><a href="#media" data-toggle="tab">%media%</a></li>
-    <li><a href="#misc" data-toggle="tab">%miscellaneous%</a></li>
-</ul>
-
-<div class="tab-content">   
-    
-    <div class="tab-pane active" id="home">
-        <ul class="nav nav-pills">
+<ul class="nav">
+    <li class="active dropbown">
+        
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%main% <b class="caret"></b></a>
+        <ul class="dropdown-menu">
             <li><a href="index.php?site=news">%news%</a></li>
-            <li><a href="index.php?site=news&amp;action=archive">%archives%</a</li>
+            <li><a href="index.php?site=news&amp;action=archive">%archives%</a></li>
             <li><a href="index.php?site=articles">%articles%</a></li>
             <li><a href="index.php?site=calendar">%calendar%</a></li>
             <li><a href="index.php?site=faq">%faq%</a></li>
             <li><a href="index.php?site=search">%search%</a></li>
         </ul>
-    </div>
+        
+    </li>
     
-    <div class="tab-pane" id="clan">  
-        <ul class="nav nav-pills">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%clan% <b class="caret"></b></a>
+        <ul class="dropdown-menu">
             <li><a href="index.php?site=about">%about_us%</a></li>
             <li><a href="index.php?site=squads">%squads%</a></li>
             <li><a href="index.php?site=members">%members%</a></li>
@@ -28,31 +23,34 @@
             <li><a href="index.php?site=history">%history%</a></li>
             <li><a href="index.php?site=awards">%awards%</a></li>
         </ul>
-    </div>
+    </li>
     
-    <div class="tab-pane" id="community">
-        <ul class="nav nav-pills">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%community% <b class="caret"></b></a>
+        <ul class="dropdown-menu">
             <li><a href="index.php?site=forum">%forums%</a></li>
             <li><a href="index.php?site=guestbook">%guestbook%</a></li>
-            <li><a href="index.php?site=registered_users">%registered_users%</a></li>
+            <li><a href="index.php?site=registered_users">%registered_users% <b class="caret"></b></a></li>
             <li><a href="index.php?site=whoisonline">%who_is_online%</a></li>
             <li><a href="index.php?site=polls">%polls%</a></li>
             <li><a href="index.php?site=server">%servers%</a></li>
         </ul>
-    </div>
+    </li>
     
-    <div class="tab-pane" id="media">    
-        <ul class="nav nav-pills">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%media% <b class="caret"></b></a>
+        <ul class="dropdown-menu">
             <li><a href="index.php?site=files">%downloads%</a></li>
             <li><a href="index.php?site=demos">%demos%</a></li>
             <li><a href="index.php?site=links">%links%</a></li>
             <li><a href="index.php?site=gallery">%gallery%</a></li>
             <li><a href="index.php?site=linkus">%links_us%</a></li>
         </ul>
-    </div>  
+    </li>
     
-    <div class="tab-pane" id="misc">  
-        <ul class="nav nav-pills">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">%miscellaneous% <b class="caret"></b></a>
+        <ul class="dropdown-menu">
             <li><a href="index.php?site=sponsors">%sponsors%</a></li>
             <li><a href="index.php?site=newsletter">%newsletter%</a></li>
             <li><a href="index.php?site=contact">%contact%</a></li>
@@ -60,6 +58,6 @@
             <li><a href="index.php?site=joinus">%join_us%</a></li>
             <li><a href="index.php?site=imprint">%imprint%</a></li>
         </ul>
-    </div>  
+    </li>
     
-</div>
+</ul>
