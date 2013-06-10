@@ -214,7 +214,14 @@ elseif(isset($_GET['pollID'])) {
   if($ds['intern'] == 1) $isintern = '('.$_language->module['intern'].')';
   else $isintern = '';
 	
-  if($ds['laufzeit'] < time() OR $ds['aktiv'] == "0") $timeleft = $_language->module['poll_ended']; else $timeleft = floor(($ds['laufzeit']-time())/(60*60*24))." ".$_language->module['days'];
+  if($ds['laufzeit'] < time() OR $ds['aktiv'] == "0") {
+      $timeleft = $_language->module['poll_ended'];
+      $active = '';
+  }
+  else {
+      $timeleft = floor(($ds['laufzeit']-time())/(60*60*24))." ".$_language->module['days'];
+      $active = 'active';
+  }
 
 	for ($n = 1; $n <= 10; $n++) {
 		if($ds['o'.$n]) $options[] = clearfromtags($ds['o'.$n]);
@@ -352,7 +359,14 @@ else {
       if($ds['intern'] == 1) $isintern = '('.$_language->module['intern'].')';
       else $isintern = '';
       
-			if($ds['laufzeit'] < time() or $ds['aktiv'] == "0") $timeleft = $_language->module['poll_ended']; else $timeleft = floor(($ds['laufzeit']-time())/(60*60*24))." ".$_language->module['days']." (".date("d.m.Y H:i", $ds['laufzeit']).") <br /><a href='index.php?site=polls&amp;vote=".$ds['pollID']."'>[".$_language->module['vote_now']."]</a>";
+			if($ds['laufzeit'] < time() or $ds['aktiv'] == "0") {
+                $timeleft = $_language->module['poll_ended'];
+                $active = '';
+            }
+            else {
+                $timeleft = floor(($ds['laufzeit']-time())/(60*60*24))." ".$_language->module['days']." (".date("d.m.Y H:i", $ds['laufzeit']).") <br /><a href='index.php?site=polls&amp;vote=".$ds['pollID']."'>[".$_language->module['vote_now']."]</a>";
+                $active = 'active';
+            }
 
 			for ($n=1; $n<=10; $n++) {
 				if($ds['o'.$n]) $options[] = clearfromtags($ds['o'.$n]);
