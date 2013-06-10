@@ -92,7 +92,7 @@ $index_language = $_language->module;
     
         <div class="row">
             <!-- left column -->
-            <div class="span3">
+            <div class="span3 visible-desktop">
                 <hr class="grey" />
                 <!-- poll include -->
                 <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br />
@@ -159,54 +159,74 @@ $index_language = $_language->module;
             <!-- right column -->
             <div class="span3">
                 <!-- login include -->
-                <b><?php echo $myclanname.".".$index_language['login']; ?></b><br />
-                <?php include("login.php"); ?>
-                <!-- end login include -->
-                <hr class="grey" />
-                <!-- topnews include -->
-                <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br />
-                <?php include("sc_topnews.php"); ?>
-                <!-- topnews include -->
-                <hr class="grey" />
-                <!-- headlines include -->
-                <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br />
-                <?php include("sc_headlines.php"); ?>
-                <!-- end headlines include -->
-                <hr class="grey" />
-                <!-- squads include -->
-                <b><?php echo $myclanname.".".$index_language['squads']; ?></b><br />
-                <center><?php include("sc_squads.php"); ?></center>
-                <!-- end squads include -->
-                <hr class="grey" />
-                <!-- clanwars include -->
-                <b><?php echo $myclanname.".".$index_language['matches']; ?></b><br />
-                <?php include("sc_results.php"); ?>
-                <!-- end clanwars include -->
-                <hr class="grey" />
-                <!-- demos include -->
-                <b><?php echo $myclanname.".".$index_language['demos']; ?></b><br />
-                <?php include("sc_demos.php"); ?>
-                <!-- end demos include -->
-                <hr class="grey" />
-                <!-- upcoming events include -->
-                <b><?php echo $myclanname.".".$index_language['upcoming_events']; ?></b><br />
-                <?php include("sc_upcoming.php"); ?>
-                <!-- end upcoming events include -->
-                <hr class="grey" />
-                <!-- shoutbox include -->
-                <b><?php echo $myclanname.".".$index_language['shoutbox']; ?></b><br />
-                <center><?php include("shoutbox.php"); ?></center>
-                <!-- end shoutbox include -->
-                <hr class="grey" />
-                <!-- newsletter include -->
-                <b><?php echo $myclanname.".".$index_language['newsletter']; ?></b><br />
-                <?php include("sc_newsletter.php"); ?>
-                <!-- end newsletter include -->
-                <hr class="grey" />
-                <!-- statistics include -->
-                <b><?php echo $myclanname.".".$index_language['statistics']; ?></b><br />
-                <?php include("counter.php"); ?>
-                <!-- end statistics include -->
+                <div>
+                    <b><?php echo $myclanname.".".$index_language['login']; ?></b><br />
+                    <?php include("login.php"); ?>
+                    <!-- end login include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- topnews include -->
+                    <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br />
+                    <?php include("sc_topnews.php"); ?>
+                    <!-- topnews include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- headlines include -->
+                    <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br />
+                    <?php include("sc_headlines.php"); ?>
+                    <!-- end headlines include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- squads include -->
+                    <b><?php echo $myclanname.".".$index_language['squads']; ?></b><br />
+                    <center><?php include("sc_squads.php"); ?></center>
+                    <!-- end squads include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- clanwars include -->
+                    <b><?php echo $myclanname.".".$index_language['matches']; ?></b><br />
+                    <?php include("sc_results.php"); ?>
+                    <!-- end clanwars include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- demos include -->
+                    <b><?php echo $myclanname.".".$index_language['demos']; ?></b><br />
+                    <?php include("sc_demos.php"); ?>
+                    <!-- end demos include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- upcoming events include -->
+                    <b><?php echo $myclanname.".".$index_language['upcoming_events']; ?></b><br />
+                    <?php include("sc_upcoming.php"); ?>
+                    <!-- end upcoming events include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- shoutbox include -->
+                    <b><?php echo $myclanname.".".$index_language['shoutbox']; ?></b><br />
+                    <center><?php include("shoutbox.php"); ?></center>
+                    <!-- end shoutbox include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- newsletter include -->
+                    <b><?php echo $myclanname.".".$index_language['newsletter']; ?></b><br />
+                    <?php include("sc_newsletter.php"); ?>
+                    <!-- end newsletter include -->
+                </div>
+                <div class="visible-desktop visible-tablet">
+                    <hr class="grey" />
+                    <!-- statistics include -->
+                    <b><?php echo $myclanname.".".$index_language['statistics']; ?></b><br />
+                    <?php include("counter.php"); ?>
+                    <!-- end statistics include -->
+                </div>
             </div>
         </div>
         
