@@ -1,0 +1,63 @@
+<script language="JavaScript" type="text/javascript">
+<!--
+var comment_submit = false;
+function chkFormular() {
+	if(document.getElementById('name').value == "") {
+		alert('%enter_name%');
+		document.getElementById('name').focus();
+   		return false;
+	}
+	if(document.getElementById('message').value == "") {
+		alert('%enter_message%');
+		document.getElementById('message').focus();
+   		return false;
+	}
+  	if(document.getElementById('captcha').value == "") {
+		alert('%error_captcha%');
+		document.getElementById('captcha').focus();
+   		return false;
+	}
+	if(!validbbcode(document.getElementById('message').value)){
+		return false;
+	}
+	if(comment_submit == true){
+		return false;
+	}
+	comment_submit = true;	
+}
+-->
+</script>
+
+<a name="addcomment"></a>
+<form id="post" name="post" action="comments.php" method="post" onsubmit="return chkFormular()" class="form-horizontal">
+    
+    <h4>%title_comment%</h4>
+    <div class="control-group">
+        <input name="name" type="text" id="name" value="$name" placeholder="%name%" />
+    </div>
+    <div class="control-group">
+        <input name="mail" type="email" value="$mail" placeholder="%mail%" />
+    </div>
+    <div class="control-group">
+        <input name="url" type="text" value="$url" placeholder="%homepage%" />
+    </div>
+    <div class="control-group">
+        <label for="captcha">$captcha</label>
+        <input name="captcha" id="captcha" type="text" value="" size="5" />
+        <input name="captcha_hash" type="hidden" value="$hash" />
+    </div>
+    <div class="control-group">
+        <textarea name="message" id="message" rows="5" cols="35" style="width:99%;">$message</textarea>
+    </div>
+    
+    <input type="hidden" name="referer" value="$referer" />
+    <input type="hidden" name="parentID" value="$parentID" />
+    <input type="hidden" name="type" value="$type" />
+    <input type="hidden" name="ip" value="$ip" /> 
+    
+    <div class="control-group">
+        <input type="submit" name="savevisitorcomment" value="%post_comment%" class="btn btn-primary" />
+        <small><b>%options%:</b> &#8226; %html_off% &#8226; %bbcode_on% &#8226; %smilies_on%</small>
+    </div>
+    
+</form>

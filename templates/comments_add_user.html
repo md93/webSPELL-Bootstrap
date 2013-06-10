@@ -1,0 +1,36 @@
+<script language="JavaScript" type="text/javascript">
+<!--
+var comment_submit = false;
+function chkFormular() {
+	if(document.getElementById('message').value == "") {
+		alert('%enter_message%');
+		document.getElementById('message').focus();
+   		return false;
+	}
+	if(!validbbcode(document.getElementById('message').value)){
+		return false;
+	}
+	if(comment_submit == true){
+		return false;
+	}
+	comment_submit = true;	
+}
+-->
+</script>
+
+<form id="post" name="post" action="comments.php" method="post" onsubmit="return chkFormular()" class="form-horizontal">
+    
+    <h4>%title_comment%</h4>
+    <div class="control-group">
+        <textarea name="message" id="message" rows="5" cols="50" style="width:99%;"></textarea>
+    </div>
+    <div class="control-group">
+        <input type="submit" name="saveusercomment" value="%post_comment%" class="btn btn-primary" />
+        <small><b>%options%:</b> &#8226; %html_off% &#8226; %bbcode_on% &#8226; %smilies_on%</small>
+    </div>
+    
+    <input type="hidden" name="userID" value="$userID" />
+    <input type="hidden" name="referer" value="$referer" />
+    <input type="hidden" name="parentID" value="$parentID" />
+    <input type="hidden" name="type" value="$type" />    
+</form>

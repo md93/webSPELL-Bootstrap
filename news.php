@@ -578,7 +578,7 @@ elseif($action=="unpublished") {
                 <option value="publish">'.$_language->module['publish_selected'].'</option>
                 <option value="delete">'.$_language->module['delete_selected'].'</option>
               </select>
-              <input type="submit" name="quickaction" value="'.$_language->module['go'].'" /></td>
+              <input type="submit" name="quickaction" value="'.$_language->module['go'].'" class="btn btn-danger" /></td>
             </tr>
           </table>
           </form>';
@@ -653,7 +653,7 @@ elseif($action=="archive") {
 
 
 		if($pages>1) echo $page_link;
-		if(isnewsadmin($userID)) echo'<form method="post" name="form" action="news.php">';
+		if(isnewsadmin($userID)) echo'<form method="post" name="form" action="news.php" class="form-inline">';
 		
     eval ("\$news_archive_head = \"".gettemplate("news_archive_head")."\";");
 		echo $news_archive_head;
@@ -698,17 +698,19 @@ elseif($action=="archive") {
 			$i++;
 		}
 		
-    if(isnewsadmin($userID)) $admdel='<table width="100%" border="0" cellspacing="0" cellpadding="2">
-		  <tr>
-        <td><input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);" /> '.$_language->module['select_all'].'</td>
-        <td align="right"><select name="quickactiontype">
-          <option value="delete">'.$_language->module['delete_selected'].'</option>
-          <option value="unpublish">'.$_language->module['unpublish_selected'].'</option>
-        </select>
-        <input type="submit" name="quickaction" value="'.$_language->module['go'].'" /></td>
-      </tr>
-    </table>
-    </form>';
+    if(isnewsadmin($userID)) $admdel='<div class="row">
+		  
+          <div class="span2">
+           <input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);" /> '.$_language->module['select_all'].'
+          </div>
+          
+          <select name="quickactiontype" class="span3">
+              <option value="delete">'.$_language->module['delete_selected'].'</option>
+              <option value="unpublish">'.$_language->module['unpublish_selected'].'</option>
+          </select>
+          <input type="submit" name="quickaction" value="'.$_language->module['go'].'" class="btn btn-danger span1" />
+          
+    </div></form>';
 		else $admdel='';
 
 		eval ("\$news_archive_foot = \"".gettemplate("news_archive_foot")."\";");
