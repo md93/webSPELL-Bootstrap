@@ -1,0 +1,27 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    // Loading the large images only for Tablets and Desktops 
+    var windowWidth = $(document).width();
+    if(windowWidth > 480) {
+        $('img[src*="images/gallery/thumb/"]').each(function() {
+            var newSrc = $(this).attr('src');
+            newSrc = newSrc.replace('images/gallery/thumb/','images/gallery/large/');
+            $(this).attr('src', newSrc);
+        });
+    }
+});
+</script>
+
+<ul class="breadcrumb">
+    <li><a href="index.php?site=gallery">%gallery%</a> <span class="divider">/</span></li>
+    <li>$group <span class="divider">/</span></li>
+    <li class="active">$title</li>
+    <li class="active pull-right">$pics %pictures% </li>
+</ul>
+
+<!--<small>$pages %page_s%</small> $diashow $pagelink-->
+<div id="myCarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+        $carouselIndicators
+    </ol>
+    <div class="carousel-inner">
