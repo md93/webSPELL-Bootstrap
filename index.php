@@ -41,23 +41,22 @@ $hide1 = array("forum","forum_topic");
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="Clanpage using webSPELL 4 CMS" />
-<meta name="author" content="webspell.org" />
-<meta name="keywords" content="webspell, webspell4, clan, cms" />
-<meta name="copyright" content="Copyright &copy; 2005 - 2011 by webspell.org" />
-<meta name="generator" content="webSPELL" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="Clanpage using webSPELL 4 CMS">
+<meta name="author" content="webspell.org">
+<meta name="keywords" content="webspell, webspell4, clan, cms">
+<meta name="generator" content="webSPELL">
 
 <!-- Head & Title include -->
 <title><?php echo PAGETITLE; ?></title>
-<link href="css/style.css" rel="stylesheet" />
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js" language="jscrip" type="text/javascript"></script>
-<script src="js/wSBs.js" language="jscrip" type="text/javascript"></script>
-<script src="js/bbcode.js" language="jscript" type="text/javascript"></script>
+<link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/wSBs.js" type="text/javascript"></script>
+<script src="js/bbcode.js" type="text/javascript"></script>
 <!-- end Head & Title include -->
 
 </head>
@@ -97,49 +96,49 @@ $hide1 = array("forum","forum_topic");
         <div class="row">
             <!-- left column -->
             <div class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"span3 visible-desktop"; ?>">
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- poll include -->
-                <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br>
                 <?php include("poll.php"); ?>
                 <!-- end poll include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- pic of the moment include -->
-                <b><?php echo $myclanname.".".$index_language['pic_of_the_moment']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['pic_of_the_moment']; ?></b><br>
                 <center><?php include("sc_potm.php"); ?></center>
                 <!-- end pic of the moment include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- language switch include -->
-                <b><?php echo $myclanname.".".$index_language['language_switch']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['language_switch']; ?></b><br>
                 <center><?php include("sc_language.php"); ?></center>
                 <!-- end language switch include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- randompic include -->
-                <b><?php echo $myclanname.".".$index_language['random_user']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['random_user']; ?></b><br>
                 <?php include("sc_randompic.php"); ?>
                 <!-- end randompic include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- articles include -->
-                <b><?php echo $myclanname.".".$index_language['articles']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['articles']; ?></b><br>
                 <?php include("sc_articles.php"); ?>
                 <!-- end articles include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- downloads include -->
-                <b><?php echo $myclanname.".".$index_language['downloads']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['downloads']; ?></b><br>
                 <?php include("sc_files.php"); ?>
                 <!-- end downloads include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- servers include -->
-                <b><?php echo $myclanname.".".$index_language['server']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['server']; ?></b><br>
                 <?php include("sc_servers.php"); ?>
                 <!-- end servers include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- sponsors include -->
-                <b><?php echo $myclanname.".".$index_language['sponsors']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['sponsors']; ?></b><br>
                 <center><?php include("sc_sponsors.php"); ?></center>
                 <!-- end sponsors include -->
-                <hr class="grey" />
+                <hr class="grey">
                 <!-- partners include -->
-                <b><?php echo $myclanname.".".$index_language['partners']; ?></b><br />
+                <b><?php echo $myclanname.".".$index_language['partners']; ?></b><br>
                 <center><?php include("partners.php"); ?></center>
                 <!-- end partners include -->
             </div>
@@ -159,80 +158,77 @@ $hide1 = array("forum","forum_topic");
             <div class="span3">
                 <!-- login include -->
                 <div>
-                    <b><?php echo $myclanname.".".$index_language['login']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['login']; ?></b><br>
                     <?php include("login.php"); ?>
                 </div>
-                
                 <div class="visible-desktop visible-tablet">
-                    <hr class="grey" />
-                    <b><?php echo $myclanname.".".$index_language['topics']; ?></b><br />
+                    <hr class="grey">
+                    <b><?php echo $myclanname.".".$index_language['topics']; ?></b><br>
                     <?php include("latesttopics.php"); ?>
                 </div>
-                
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
-                    <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br />
+                    <hr class="grey">
+                    <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br>
                     <?php include("sc_topnews.php"); ?>
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- headlines include -->
-                    <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br>
                     <?php include("sc_headlines.php"); ?>
                     <!-- end headlines include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- squads include -->
-                    <b><?php echo $myclanname.".".$index_language['squads']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['squads']; ?></b><br>
                     <center><?php include("sc_squads.php"); ?></center>
                     <!-- end squads include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- clanwars include -->
-                    <b><?php echo $myclanname.".".$index_language['matches']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['matches']; ?></b><br>
                     <?php include("sc_results.php"); ?>
                     <!-- end clanwars include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- demos include -->
-                    <b><?php echo $myclanname.".".$index_language['demos']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['demos']; ?></b><br>
                     <?php include("sc_demos.php"); ?>
                     <!-- end demos include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- upcoming events include -->
-                    <b><?php echo $myclanname.".".$index_language['upcoming_events']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['upcoming_events']; ?></b><br>
                     <?php include("sc_upcoming.php"); ?>
                     <!-- end upcoming events include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- shoutbox include -->
-                    <b><?php echo $myclanname.".".$index_language['shoutbox']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['shoutbox']; ?></b><br>
                     <center><?php include("shoutbox.php"); ?></center>
                     <!-- end shoutbox include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- newsletter include -->
-                    <b><?php echo $myclanname.".".$index_language['newsletter']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['newsletter']; ?></b><br>
                     <?php include("sc_newsletter.php"); ?>
                     <!-- end newsletter include -->
                 </div>
                 <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
-                    <hr class="grey" />
+                    <hr class="grey">
                     <!-- statistics include -->
-                    <b><?php echo $myclanname.".".$index_language['statistics']; ?></b><br />
+                    <b><?php echo $myclanname.".".$index_language['statistics']; ?></b><br>
                     <?php include("counter.php"); ?>
                     <!-- end statistics include -->
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 </body>
