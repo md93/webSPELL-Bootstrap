@@ -48,11 +48,12 @@ $index_language = $_language->module;
 <!-- Head & Title include -->
 <title><?php echo PAGETITLE; ?></title>
 <link href="css/style.css" rel="stylesheet" />
-<link href="css/bootstrap.css" rel="stylesheet" />
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/bootstrap.js" language="jscrip" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" language="jscrip" type="text/javascript"></script>
+<script src="js/wSBs.js" language="jscrip" type="text/javascript"></script>
 <script src="js/bbcode.js" language="jscript" type="text/javascript"></script>
 <!-- end Head & Title include -->
 
@@ -84,7 +85,7 @@ $index_language = $_language->module;
     
     <div class="container">
         
-        <div class="hero-unit">
+        <div class="hero-unit .visible">
             <h1>webSPELL Bootstrap</h1>
             <p>Free Template, build by you.</p>
             <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-primary btn-large">» View on GitHub</a></p>

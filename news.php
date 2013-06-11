@@ -691,7 +691,7 @@ elseif($action=="archive") {
 
 			$multiple='';
 			$admdel='';
-			if(isnewsadmin($userID)) $multiple='<input class="input" type="checkbox" name="newsID[]" value="'.$ds['newsID'].'" />';
+			if(isnewsadmin($userID)) $multiple='<input class="input hidden" type="checkbox" name="newsID[]" value="'.$ds['newsID'].'" />';
 
 			eval ("\$news_archive_content = \"".gettemplate("news_archive_content")."\";");
 			echo $news_archive_content;

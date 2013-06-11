@@ -33,11 +33,7 @@ fetch('shoutbox_content.php', 'shoutbox', 'replace', 'time', $refresh);
     <input type="text" id="shoutbox_message" name="message" size="24" maxlength="255" placeholder="Message" />
 </div>
     
-<div class="control-group">
- <div class="input-prepend"> 
-  $captcha_form
- </div>
+$captcha_form
 
-</div>
 <a href="javascript:if(chkFormularShoutBox())+document.shout.submit();" class="btn btn-primary">%shout%</a> - <a href="index.php?site=shoutbox_content&amp;action=showall">%all_messages%</a>
 </form>
