@@ -49,14 +49,18 @@ $hide1 = array("forum","forum_topic");
 
 <!-- Head & Title include -->
 <title><?php echo PAGETITLE; ?></title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/gridpushpulladdon.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!--[if IE 7]> <link rel="stylesheet" href="css/font-awesome-ie7.min.css"> <![endif]-->
 <link href="css/style.css" rel="stylesheet">
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
-<script src="js/wSBs.js" type="text/javascript"></script>
-<script src="js/bbcode.js" type="text/javascript"></script>
+
+<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="js/bbcode.js"></script>
+
+
 <!-- end Head & Title include -->
 
 </head>
@@ -231,5 +235,19 @@ $hide1 = array("forum","forum_topic");
         </div>
     </div>
 </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>') //local fallback</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/holder.js">//create images with <img data-src="holder.js/260x200"></script>
+<script src="js/wSBs.js" type="text/javascript"></script>
+
+<script>
+    //uncomment for analytics use
+    /*var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));*/
+</script>
+
 </body>
 </html>
