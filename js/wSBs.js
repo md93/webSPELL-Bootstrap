@@ -14,4 +14,9 @@
      );   
         
   });
+  $('.bbcodebuttons').tooltip({
+      selector: "a[data-toggle=tooltip]",
+      html: true,
+      container: 'body'
+    })
 })(jQuery);
