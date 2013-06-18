@@ -35,7 +35,7 @@ $index_language = $_language->module;
 // end important data include
 
 $hide1 = array("forum","forum_topic");
-
+header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,8 +59,6 @@ $hide1 = array("forum","forum_topic");
 
 <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="js/bbcode.js"></script>
-
-
 <!-- end Head & Title include -->
 
 </head>
@@ -90,7 +88,9 @@ $hide1 = array("forum","forum_topic");
     </div><!-- navbar navbar-inverse navbar-fixed-top -->
     
     <div class="container">
-        
+        <!--[if lte IE 8]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
         <div class="hero-unit hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
             <h1>webSPELL Bootstrap</h1>
             <p>Free Template, build by you.</p>
@@ -98,8 +98,19 @@ $hide1 = array("forum","forum_topic");
         </div>
     
         <div class="row">
+            <!-- main content area -->
+            <div class="<?php if(in_array($site, $hide1)) echo "span9"; else echo"span6 push3"; ?>">
+                <?php
+                    if(!isset($site)) $site="news";
+                    $invalide = array('\\','/','/\/',':','.');
+                    $site = str_replace($invalide,' ',$site);
+                    if(!file_exists($site.".php")) $site = "news";
+                    include($site.".php");
+                ?>
+            </div>
+
             <!-- left column -->
-            <div class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"span3 visible-desktop"; ?>">
+            <div class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"span3 pull6 visible-desktop"; ?>">
                 <hr class="grey">
                 <!-- poll include -->
                 <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br>
@@ -147,16 +158,7 @@ $hide1 = array("forum","forum_topic");
                 <!-- end partners include -->
             </div>
             
-            <!-- main content area -->
-            <div class="<?php if(in_array($site, $hide1)) echo "span9"; else echo"span6"; ?>">
-                <?php
-                    if(!isset($site)) $site="news";
-                    $invalide = array('\\','/','/\/',':','.');
-                    $site = str_replace($invalide,' ',$site);
-                    if(!file_exists($site.".php")) $site = "news";
-                    include($site.".php");
-                ?>
-            </div>
+            
             
             <!-- right column -->
             <div class="span3">
