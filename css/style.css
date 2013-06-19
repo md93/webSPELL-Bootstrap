@@ -14,3 +14,8 @@ body {
     padding: 0.2em 0;
     text-align: center;
 }
+
+.add-on.captcha-img {
+    height:25px!important;
+    padding:2px 5px 1px!important;
+}
