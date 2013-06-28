@@ -6,3 +6,16 @@ body {
 .inputselect.btn.btn-danger div a {
     color:#ccc;
 }
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: black;
+    padding: 0.2em 0;
+    text-align: center;
+}
+
+.add-on.captcha-img {
+    height:25px!important;
+    padding:2px 5px 1px!important;
+}

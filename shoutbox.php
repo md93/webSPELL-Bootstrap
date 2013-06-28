@@ -34,7 +34,7 @@ else {
 	$captcha = $CAPCLASS->create_captcha();
 	$hash = $CAPCLASS->get_hash();
 	$CAPCLASS->clear_oldcaptcha();
-	$captcha_form = '<div class="control-group"><div class="input-prepend"><span class="add-on">'.$captcha.'</span><input type="text" name="captcha" size="5" maxlength="5" class="input-small" placeholder="Enter Captcha" /><input name="captcha_hash" type="hidden" value="'.$hash.'" /></div></div>';
+	$captcha_form = '<div class="control-group"><div class="input-prepend"><span class="add-on captcha-img">'.$captcha.'</span><input type="text" name="captcha" size="5" maxlength="5" class="input-small" placeholder="Enter Captcha"><input name="captcha_hash" type="hidden" value="'.$hash.'"></div></div>';
 }
 
 $_language->read_module('shoutbox');

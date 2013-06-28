@@ -16,3 +16,4 @@ _functions.php
 _mysql.php
 _settings.php
 *.txt
+*DS_STORE
