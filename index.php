@@ -36,9 +36,26 @@ $index_language = $_language->module;
 
 $hide1 = array("forum","forum_topic");
 header('X-UA-Compatible: IE=edge,chrome=1');
+
+
+if($_language->language=="uk") {
+    $language_var = "en";
+} elseif($_language->language=="cz") {
+	$language_var = "cs";
+} elseif($_language->language=="dk") {
+	$language_var = "da";
+} elseif($_language->language=="il") {
+	$language_var = "he";
+} elseif($_language->language=="ir") {
+	$language_var = "fa";
+} elseif($_language->language=="se") {
+	$language_var = "sv";
+} else {
+	$language_var = $_language->language;
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $language_var; ?>">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
