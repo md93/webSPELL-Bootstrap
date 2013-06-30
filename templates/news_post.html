@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Clanpage using webSPELL 4 CMS" />
+	<meta name="author" content="webspell.org" />
+	<meta name="keywords" content="webspell, webspell4, clan, cms" />
+	<meta name="copyright" content="Copyright &copy; 2005 - 2011 by webspell.org" />
+	<meta name="generator" content="webSPELL" />
+
+<!-- Head & Title include -->
+	<title>%new_post%</title>
+	<link href="_stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+	<script src="js/bbcode.js" language="jscript" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" language="jscrip" type="text/javascript"></script>
+
+<!-- end Head & Title include -->
+<script language="JavaScript" type="text/JavaScript">
+<!-- 
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+default_language = "de";
+
+message = new Array();
+headline = new Array();
+langs = new Array();
+
+news_languages = new Array();
+$langs
+
+function update_language() {
+	delete_array = new Array();
+	for(var i = 0; i < news_languages.length; i++) {
+		delete_array[i] = new Array(0, null);
+	}
+	for(var i = 0; i < langs.length; i++) {
+		option = document.getElementById('lang_' + i);
+		for(var z = 0; z < news_languages.length; z++) {
+			if(option.options[z].selected == true) {
+				delete_array[z][0] = 1;
+				delete_array[z][1] = i;
+			}
+		}
+	}
+	for(var i = 0; i < langs.length; i++) {
+		option = document.getElementById('lang_' + i);
+		for(var z = 0; z < news_languages.length; z++) {
+			if(delete_array[z][0] == 1 && delete_array[z][1] != i) {
+				option.options[z].disabled = true;
+				option.options[z].style.backgroundColor = '#B10000';
+				option.options[z].style.display = 'none';
+			}
+			else {
+				option.options[z].disabled = false;
+				option.options[z].style.backgroundColor = '#FFFFFF';
+				option.options[z].style.display = '';
+			}
+		}
+	}
+}
+
+function initialize_language() {
+	delete_array = new Array();
+	for(var i = 0; i < news_languages.length; i++) {
+		delete_array[i] = 0;
+	}
+	for(var i = 0; i < langs.length; i++) {
+		option = document.getElementById('lang_' + i);
+		for(var z = 0; z < news_languages.length; z++) {
+			new_option = new Option(news_languages[z][1], news_languages[z][0], false, false);
+			option.options[z] = new_option;
+			if(langs[i] != '') {
+				if(langs[i] == news_languages[z][0]) {
+					option.options[z].selected = true;
+					delete_array[z] = 1;
+				}
+			}
+			else if(i == 0 && news_languages[z][0] == default_language) {
+				option.options[z].selected = true;
+				delete_array[z] = 1;
+				langs[i] = news_languages[z][0];
+			}
+			else if(i != 0 && delete_array[z] == 0) {
+				option.options[z].selected = true;
+				delete_array[z] = 1;
+				langs[i] = news_languages[z][0];
+			}
+		}
+	}
+}
+function update_textarea(value) {
+	document.getElementById('news_textarea').innerHTML='';
+	for(var i = 0; i < value; i++) {
+		if(message[i] || headline[i] || langs[i] && langs[i] != default_language)
+		{
+			document.getElementById('news_textarea').innerHTML+='<div class="control-group"><input name="headline[]" type="text" value="'+headline[i]+'" size="80" onchange="headline['+i+']=this.value;" /><select name="lang[]" id="lang_' + i + '" onchange="langs['+i+']=this.value; update_language();"></select> </div><div class="control-group"><textarea name="message[' + i + ']" onfocus="which=this;textarea = \'message[' + i + ']\';" onblur="message['+i+']=this.value;" onchange="message['+i+']=this.value;" style="width:99%" rows="12">'+message[i]+'</textarea></div>';
+		}
+		else
+		{
+			message[i] = '';
+			headline[i] = '';
+			langs[i] = '';
+			document.getElementById('news_textarea').innerHTML+='<div class="control-group"><label for="headline">%headline%</label><input name="headline[]" type="text" value="" size="80" onchange="headline['+i+']=this.value;" /><select name="lang[]" id="lang_' + i + '" onchange="langs['+i+']=this.value; update_language();"></select> <div class="control-group"><textarea name="message[' + i + ']" onfocus="which=this;textarea = \'message[' + i + ']\';" onblur="message['+i+']=this.value;" onchange="message['+i+']=this.value;" style="width:99%" rows="12"></textarea></div>';
+		}
+	}
+	if(message.length > value) {
+		var message_length = message.length;
+		for(var i = value; i < message_length; i++) {
+			delete message[i];
+			message.length--;
+			delete headline[i];
+			headline.length--;
+			delete langs[i];
+			langs.length--;
+		}
+	}
+	
+	initialize_language();
+	update_language();
+}
+
+function chkFormular() {
+	
+	if(document.getElementsByName('headline[]')[0].value == "") {
+		alert("%enter_title%");
+		document.getElementsByName('headline[]')[0].focus();
+   		return false;
+	}
+	
+	if(message[0] == "" || typeof message[0] == undefined) {
+		alert("%enter_text%");
+   		return false;
+	}
+	message_text = '';
+	x = 0;
+	while(true){
+		if(message[x]){
+			message_text += message[x];
+			x++;
+		}
+		else{
+			break;
+		}
+	}
+	if(!validbbcode(message_text)){
+		return false;
+	}
+	
+}
+
+$message_vars
+$headline_vars
+$langs_vars
+
+-->
+</script>
+
+</head>
+<body>
+<div class="container">
+<form action="news.php?action=save" method="post" enctype="multipart/form-data" id="post" name="post" onsubmit="return chkFormular();">
+    <h2>%new_post%</h2>
+    
+    <div class="accordion" id="accordion1">
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+            Rubric
+          </a>
+        </div>
+        <div id="collapseOne" class="accordion-body collapse in">
+          <div class="accordion-inner form-horizontal">
+            <div class="control-group">
+                <b>%rubric%:</b> <select name="rubric">$rubrics</select>
+            </div> 
+            <div class="control-group">
+                <input name="button" type="button" onclick="MM_openBrWindow('upload.php?newsID=$newsID','Upload','scrollbars=yes,width=800,height=600')" value="%upload_images%" class="btn btn-danger" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
+            BBCode and Flags
+          </a>
+        </div>
+        <div id="collapseTwo" class="accordion-body collapse">
+          <div class="accordion-inner form-horizontal">
+            
+                $addbbcode
+                $addflags
+            
+          </div>
+        </div>
+      </div>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">
+            Options
+          </a>
+        </div>
+        <div id="collapseThree" class="accordion-body collapse">
+          <div class="accordion-inner form-inline">
+            
+            <div class="control-group">
+              <label for="topnews">%topnews%:</label>
+              <select name="topnews">$topnews</select>
+                
+              <label>%intern%:</label>
+              <select name="intern">$intern</select>
+            </div>  
+              
+                <div class="input-prepend input-append">
+                    <span class="add-on">News in</span>
+                    <select name="language_count" onchange="update_textarea(this.options[this.selectedIndex].value)">$selects</select>
+                    <span class="add-on">languages</span>
+                </div>
+              
+          </div>
+        </div>
+      </div>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour">
+            Links
+          </a>
+        </div>
+        <div id="collapseFour" class="accordion-body collapse">
+          <div class="accordion-inner form-horizontal">
+              
+            <table width="100%" border="0" cellpadding="0" cellspacing="2">
+              <tr>
+                <td valign="top">%link% 1:
+                <input name="link1" type="text" value="$link1" />
+                <input name="url1" type="text" value="$url1" />
+                <input class="input" name="window1" type="radio" value="1" $window1_new />
+                %new_window%
+                <input class="input" type="radio" name="window1" value="0" $window1_self/>
+                %self%
+                <br />
+                %link% 2:
+                <input name="link2" type="text" value="$link2" />
+                <input name="url2" type="text" value="$url2" />
+                <input class="input" name="window2" type="radio" value="1" $window2_new/>
+                %new_window%
+                <input class="input" type="radio" name="window2" value="0" $window2_self />
+                %self%
+                <br />
+                %link% 3:
+                <input name="link3" type="text" value="$link3" />
+                <input name="url3" type="text" value="$url3" />
+                <input class="input" name="window3" type="radio" value="1" $window3_new/>
+                %new_window%
+                <input class="input" type="radio" name="window3" value="0" $window3_self />
+                %self%
+                <br />
+                %link% 4:
+                <input name="link4" type="text" value="$link4" />
+                <input name="url4" type="text" value="$url4" />
+                <input class="input" name="window4" type="radio" value="1" $window4_new/>
+                %new_window%
+                <input class="input" type="radio" name="window4" value="0" $window4_self />
+                %self%</td>
+                <td valign="top"><br />&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="5"><hr /></td>
+              </tr>
+              <tr align="right">
+                <td colspan="2">
+                <input type="hidden" name="userID" value="$userID" />
+                <input type="hidden" name="newsID" value="$newsID" />
+                <select name="comments">$comments</select>
+                </td>
+              </tr>
+            </table>
+              
+          </div>
+        </div>
+      </div>
+        
+    </div>
+    
+    <div id="news_textarea"></div>
+    
+    
+                <input type="submit" name="save" value="%save_news%" class="btn btn-danger" />
+                <input type="submit" name="preview" value="%preview%" class="btn btn-primary" />
+                <!--<input type="button" onclick="window.close()" value="%cancel%" class="btn btn-primary" />-->
+    
+      <script language="JavaScript" type="text/javascript">
+      /* <![CDATA[ */
+      update_textarea($langcount);
+      /* ]]> */
+      </script>
+
+</form>
+</div>
+</body>
+</html>
