@@ -477,7 +477,7 @@ else {
             $i++;
             
             $ds['picture'] = $galclass->randompic($ds['galleryID']);
-            if(isset($ds['date'])) $gallery['date'] = date('d.m.Y', $ds['date']);
+            if(isset($ds['date'])) $ds['date'] = date('d.m.Y', $ds['date']);
             if(isset($ds['galleryID'])) $ds['count'] = mysql_num_rows(safe_query("SELECT picID FROM ".PREFIX."gallery_pictures WHERE galleryID='".$ds['galleryID']."'"));
             
             if(isset($ds['count'])) {
