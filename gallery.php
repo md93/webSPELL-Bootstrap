@@ -384,7 +384,7 @@ elseif(isset($_GET['groupID'])) {
 	else $page = $_GET['page'];
 
 	if($pages > 1) $pagelink = makepagelink("index.php?site=gallery&amp;groupID=".$_GET['groupID'], $page, $pages);
-	else $pagelink = '<img src="images/icons/multipage.gif" width="10" height="12" alt=""> <small>'.$_language->module['pg_1_1'].'</small>';
+	else $pagelink = '';
 
 	$group = $galclass->getgroupname($_GET['groupID']);
 	if($_GET['groupID'] == 0) $group = $_language->module['usergalleries'];
