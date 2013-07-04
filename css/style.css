@@ -1,6 +1,12 @@
-body {
-    padding-top: 60px;
-    padding-bottom: 40px;
+.ws_main_wrapper {
+    margin-bottom: 40px;
+}
+
+/* Removing unwanted whitespace above navigation */ 
+@media (min-width: 1200px) {
+    .ws_main_wrapper {
+        margin-top:60px;
+    }
 }
 
 .inputselect.btn.btn-danger div a {

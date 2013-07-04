@@ -29,5 +29,14 @@
   else if(leftcol.is(':visible') && !maincol.hasClass('push3') || maincol.hasClass('span9')) {
     maincol.addClass('push3 span6').removeClass('span9');
   }
-
+  
+    // Loading the large images only for Tablets and Desktops 
+    var windowWidth = $(document).width();
+    if(windowWidth > 480) {
+        $('img[src*="images/gallery/thumb/"]').each(function() {
+            var newSrc = $(this).attr('src');
+            newSrc = newSrc.replace('images/gallery/thumb/','images/gallery/large/');
+            $(this).attr('src', newSrc);
+        });
+    }
 })(jQuery);
