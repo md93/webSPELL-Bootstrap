@@ -116,7 +116,7 @@ if($_language->language=="uk") {
     
         <div class="row">
             <!-- main content area -->
-            <div class="<?php if(in_array($site, $hide1)) echo "span9"; else echo"span6 push3"; ?>">
+            <div id="maincol" class="<?php if(in_array($site, $hide1)) echo "span9"; else echo"span6 push3"; ?>">
                 <?php
                     if(!isset($site)) $site="news";
                     $invalide = array('\\','/','/\/',':','.');
@@ -127,7 +127,7 @@ if($_language->language=="uk") {
             </div>
 
             <!-- left column -->
-            <div class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"span3 pull6 visible-desktop"; ?>">
+            <div id="leftcol" class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"span3 pull6 visible-desktop"; ?>">
                 <hr class="grey">
                 <!-- poll include -->
                 <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br>
@@ -178,72 +178,72 @@ if($_language->language=="uk") {
             
             
             <!-- right column -->
-            <div class="span3">
+            <div id="rightcol" class="span3">
                 <!-- login include -->
                 <div>
                     <b><?php echo $myclanname.".".$index_language['login']; ?></b><br>
                     <?php include("login.php"); ?>
                 </div>
-                <div class="visible-desktop visible-tablet">
+                <div class="hidden-phone">
                     <hr class="grey">
                     <b><?php echo $myclanname.".".$index_language['topics']; ?></b><br>
                     <?php include("latesttopics.php"); ?>
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br>
                     <?php include("sc_topnews.php"); ?>
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- headlines include -->
                     <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br>
                     <?php include("sc_headlines.php"); ?>
                     <!-- end headlines include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- squads include -->
                     <b><?php echo $myclanname.".".$index_language['squads']; ?></b><br>
                     <center><?php include("sc_squads.php"); ?></center>
                     <!-- end squads include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- clanwars include -->
                     <b><?php echo $myclanname.".".$index_language['matches']; ?></b><br>
                     <?php include("sc_results.php"); ?>
                     <!-- end clanwars include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- demos include -->
                     <b><?php echo $myclanname.".".$index_language['demos']; ?></b><br>
                     <?php include("sc_demos.php"); ?>
                     <!-- end demos include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- upcoming events include -->
                     <b><?php echo $myclanname.".".$index_language['upcoming_events']; ?></b><br>
                     <?php include("sc_upcoming.php"); ?>
                     <!-- end upcoming events include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- shoutbox include -->
                     <b><?php echo $myclanname.".".$index_language['shoutbox']; ?></b><br>
                     <center><?php include("shoutbox.php"); ?></center>
                     <!-- end shoutbox include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- newsletter include -->
                     <b><?php echo $myclanname.".".$index_language['newsletter']; ?></b><br>
                     <?php include("sc_newsletter.php"); ?>
                     <!-- end newsletter include -->
                 </div>
-                <div class="visible-desktop visible-tablet <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="hidden-phone <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- statistics include -->
                     <b><?php echo $myclanname.".".$index_language['statistics']; ?></b><br>

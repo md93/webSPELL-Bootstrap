@@ -3,7 +3,7 @@ webSPELL-Bootstrap
 Twitter Bootstrap for webSPELL 4.2.* CE
 Demo: http://pascalmh.de/webSPELL-Bootstrap/
 
-Requierments
+Requirements
 ============
 * webSPELL 4.2.* https://github.com/webSPELL/
 * Twitter Bootstrap https://github.com/twitter/bootstrap
