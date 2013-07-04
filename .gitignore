@@ -9,11 +9,7 @@ images/
 install/
 js/bootstrap.js
 js/bootstrap.min.js
-languages/
-src/
 tmp/
-_functions.php
 _mysql.php
-_settings.php
 *.txt
 *DS_STORE

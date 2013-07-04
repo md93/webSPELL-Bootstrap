@@ -32,9 +32,6 @@ $pics_per_row = 2;
 
 //Script
 
-$bgcat = BGCAT;
-$pagebg = PAGEBG;
-
 if( isset( $_GET['action'] ) ) $action = $_GET['action'];
 else $action = '';
 
@@ -366,7 +363,6 @@ elseif(isset($_GET['galleryID'])) {
 		else echo '</tr><tr>';
 		$i++;
 	}
-	echo '<td bgcolor="'.$bgcat.'">&nbsp;</td></tr>';
 
 	eval("\$gallery = \"".gettemplate("gallery_gallery_foot")."\";");
 	echo $gallery;
