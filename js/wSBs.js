@@ -18,7 +18,7 @@
       selector: "a[data-toggle=tooltip]",
       html: true,
       container: 'body'
-  })
+  });
 
   var leftcol = $('div#leftcol');
   var maincol = $('div#maincol');
