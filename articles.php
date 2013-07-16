@@ -459,7 +459,7 @@ else {
 	eval ("\$title_articles = \"".gettemplate("title_articles")."\";");
 	echo $title_articles;
 	
-  if(isnewsadmin($userID)) echo'<input type="button" onclick="MM_openBrWindow(\'articles.php?action=new\',\'Articles\',\'toolbar=no,status=no,scrollbars=yes,width=800,height=600\');" value="'.$_language->module['new_article'].'" class="btn btn-danger">';
+  if(isnewsadmin($userID)) echo'<p><input type="button" onclick="MM_openBrWindow(\'articles.php?action=new\',\'Articles\',\'toolbar=no,status=no,scrollbars=yes,width=800,height=600\');" value="'.$_language->module['new_article'].'" class="btn btn-danger"></p>';
 
 	$alle=safe_query("SELECT articlesID FROM ".PREFIX."articles WHERE saved='1'");
 	$gesamt = mysql_num_rows($alle);
