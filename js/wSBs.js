@@ -1,19 +1,17 @@
 (function($){
+
+
+
   $('.inputselect').click(function() {
         
-      var objCheckbox = $(this).find("input[type=checkbox]");
+      var objCheckbox = $(this).find(".archive-checkb");
       if( objCheckbox.length >= 1 ) {
           objCheckbox.prop("checked", !objCheckbox.prop("checked"));
+          $(this).toggleClass("btn-link").toggleClass("btn-danger"); 
       }
-      
-     $(this).toggleClass("btn-link").toggleClass("btn-danger"); 
-     console.log(
-         
-         $(this).find('.span1')
-     
-     );   
-        
   });
+
+
   $('.bbcodebuttons').tooltip({
       selector: "a[data-toggle=tooltip]",
       html: true,

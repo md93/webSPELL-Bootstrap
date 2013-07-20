@@ -617,12 +617,12 @@ elseif($action=="archive") {
 	$post='';
 	$publish='';
 	if(isnewsadmin($userID)) {
-		$post='<input type="button" onclick="MM_openBrWindow(\'news.php?action=new\',\'News\',\'toolbar=no,status=no,scrollbars=yes,width=800,height=600\')" value="'.$_language->module['post_news'].'" class="btn btn-danger" />';
+		$post='<input type="button" onclick="MM_openBrWindow(\'news.php?action=new\',\'News\',\'toolbar=no,status=no,scrollbars=yes,width=800,height=600\')" value="'.$_language->module['post_news'].'" class="btn btn-danger">';
 		$unpublished=safe_query("SELECT newsID FROM ".PREFIX."news WHERE published='0' AND saved='1'");
 		$unpublished=mysql_num_rows($unpublished);
-		if($unpublished) $publish='<input type="button" onclick="MM_goToURL(\'parent\',\'index.php?site=news&amp;action=unpublished\');return document.MM_returnValue" value="'.$unpublished.' '.$_language->module['unpublished_news'].'" class="btn btn-danger" /> ';
+		if($unpublished) $publish='<input type="button" onclick="MM_goToURL(\'parent\',\'index.php?site=news&amp;action=unpublished\');return document.MM_returnValue" value="'.$unpublished.' '.$_language->module['unpublished_news'].'" class="btn btn-danger"> ';
 	}
-	echo $post.' '.$publish.' <input type="button" onclick="MM_goToURL(\'parent\',\'index.php?site=news\');return document.MM_returnValue" value="'.$_language->module['show_news'].'" class="btn btn-primary" /><hr />';
+	echo $post.' '.$publish.' <input type="button" onclick="MM_goToURL(\'parent\',\'index.php?site=news\');return document.MM_returnValue" value="'.$_language->module['show_news'].'" class="btn btn-primary"><hr>';
 
 	$all=safe_query("SELECT newsID FROM ".PREFIX."news WHERE published='1' AND intern<=".isclanmember($userID));
 	$gesamt=mysql_num_rows($all);
@@ -647,9 +647,9 @@ elseif($action=="archive") {
 	}
 	if($all) {
 		if($type=="ASC")
-		echo'<a href="index.php?site=news&amp;action=archive&amp;page='.$page.'&amp;sort='.$sort.'&amp;type=DESC">'.$_language->module['sort'].'</a> <img src="images/icons/asc.gif" width="9" height="7" border="0" alt="" />&nbsp;&nbsp;&nbsp;';
+		echo'<a href="index.php?site=news&amp;action=archive&amp;page='.$page.'&amp;sort='.$sort.'&amp;type=DESC">'.$_language->module['sort'].'</a> <img src="images/icons/asc.gif" width="9" height="7" border="0" alt="">&nbsp;&nbsp;&nbsp;';
 		else
-		echo'<a href="index.php?site=news&amp;action=archive&amp;page='.$page.'&amp;sort='.$sort.'&amp;type=ASC">'.$_language->module['sort'].'</a> <img src="images/icons/desc.gif" width="9" height="7" border="0" alt="" />&nbsp;&nbsp;&nbsp;';
+		echo'<a href="index.php?site=news&amp;action=archive&amp;page='.$page.'&amp;sort='.$sort.'&amp;type=ASC">'.$_language->module['sort'].'</a> <img src="images/icons/desc.gif" width="9" height="7" border="0" alt="">&nbsp;&nbsp;&nbsp;';
 
 
 		if($pages>1) echo $page_link;
@@ -691,24 +691,24 @@ elseif($action=="archive") {
 
 			$multiple='';
 			$admdel='';
-			if(isnewsadmin($userID)) $multiple='<input class="input hidden" type="checkbox" name="newsID[]" value="'.$ds['newsID'].'" />';
+			if(isnewsadmin($userID)) $multiple='<input class="archive-checkb input hidden" type="checkbox" name="newsID[]" value="'.$ds['newsID'].'">';
 
 			eval ("\$news_archive_content = \"".gettemplate("news_archive_content")."\";");
 			echo $news_archive_content;
 			$i++;
 		}
 		
-    if(isnewsadmin($userID)) $admdel='<div class="row">
+    if(isnewsadmin($userID)) $admdel='<div class="row-fluid">
 		  
-          <div class="span2">
-           <input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);" /> '.$_language->module['select_all'].'
+          <div class="span4">
+           <input class="input" id="archivecbx" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);"> <label for="archivecb">'.$_language->module['select_all'].'</label>
           </div>
           
-          <select name="quickactiontype" class="span3">
+          <select name="quickactiontype" class="span6">
               <option value="delete">'.$_language->module['delete_selected'].'</option>
               <option value="unpublish">'.$_language->module['unpublish_selected'].'</option>
           </select>
-          <input type="submit" name="quickaction" value="'.$_language->module['go'].'" class="btn btn-danger span1" />
+          <input type="submit" name="quickaction" value="'.$_language->module['go'].'" class="btn btn-danger span2">
           
     </div></form>';
 		else $admdel='';
