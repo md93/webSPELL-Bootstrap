@@ -419,5 +419,8 @@ elseif($userID) {
 		echo $pm_new;
 	}
 }
-else echo $_language->read_module('messenger').$_language->module['not_logged'];
+else {
+    $_language->read_module('messenger');
+    echo $_language->module['not_logged'];
+}
 ?>

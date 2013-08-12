@@ -298,7 +298,7 @@ elseif(isset($_GET['galleryID'])) {
 	$pics = mysql_num_rows(safe_query("SELECT picID FROM ".PREFIX."gallery_pictures WHERE galleryID='".$_GET['galleryID']."'"));
     
     $carouselIndicators='<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-    for($foo=2;$foo<=$pics;$foo++) {
+    for($foo=1;$foo<$pics;$foo++) {
         $carouselIndicators .= '<li data-target="#myCarousel" data-slide-to="'.$foo.'"></li>';
     }
 
@@ -315,6 +315,7 @@ elseif(isset($_GET['galleryID'])) {
 
 	//if($pages>1) $pagelink = makepagelink("index.php?site=gallery&amp;galleryID=".$_GET['galleryID'], $page, $pages);
 	//else $pagelink = '';
+	$pagelink = '';
 
 	//if($page == "1") {
 		$ergebnis = safe_query("SELECT * FROM ".PREFIX."gallery_pictures WHERE galleryID='".$_GET['galleryID']."' ORDER BY picID");
@@ -322,13 +323,13 @@ elseif(isset($_GET['galleryID'])) {
 	else {
 		$start = $page * $gallerypictures - $gallerypictures;
 		$ergebnis = safe_query("SELECT * FROM ".PREFIX."gallery_pictures WHERE galleryID='".$_GET['galleryID']."' ORDER BY picID LIMIT ".$start.", ".$gallerypictures);
-	}
+	}*/
 	if(mysql_num_rows($ergebnis)){
 		$diashow = "<strong>- <a href=\"javascript:MM_openBrWindow('gallery.php?action=diashow&amp;galleryID=$galleryID','webspell_diashow','toolbar=no,status=no,scrollbars=yes')\"><small>[".$_language->module['start_diashow']."]</small></a></strong>";
 	}
 	else {
 		$diashow = "";
-	}*/
+	}
 	eval("\$gallery = \"".gettemplate("gallery_gallery_head")."\";");
 	echo $gallery;
 	echo '<tr>';
