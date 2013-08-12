@@ -1,19 +1,28 @@
 (function($){
+
+
+
   $('.inputselect').click(function() {
-        
-      var objCheckbox = $(this).find("input[type=checkbox]");
+
+      var objCheckbox = $(this).find(".archiveitem-checkb");
       if( objCheckbox.length >= 1 ) {
           objCheckbox.prop("checked", !objCheckbox.prop("checked"));
+          $(this).toggleClass("btn-link").toggleClass("btn-danger"); 
       }
-      
-     $(this).toggleClass("btn-link").toggleClass("btn-danger"); 
-     console.log(
-         
-         $(this).find('.span1')
-     
-     );   
-        
   });
+
+  // needs review. I guess there is a better solution
+  $('#archivecbx').on('click', function(){
+    var inputsel = $('.inputselect');
+    if(inputsel.find('input').is(':checked')){
+      inputsel.removeClass("btn-link").addClass("btn-danger");
+    }else{
+      inputsel.removeClass("btn-danger").addClass("btn-link");
+    }
+  });
+
+
+
   $('.bbcodebuttons').tooltip({
       selector: "a[data-toggle=tooltip]",
       html: true,
