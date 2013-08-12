@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-lg-6">
+        <table class="table table-striped">
+          <tr>
+            <th>%visits%</th>
+          </tr>
+          <tr>
+            <td>%today%</td>
+            <td>$today</td>
+          </tr>
+          <tr>
+            <td>%yesterday%</td>
+            <td>$yesterday</td>
+          </tr>
+          <tr>
+            <td>%this_month%</td>
+            <td>$month</td>
+          </tr>
+          <tr>
+            <td>%total%</td>
+            <td>$total</td>
+          </tr>
+        </table>
+    
+        <table class="table table-striped">
+          <tr>
+            <th>%this_month%</th>
+          </tr>
+          $monatsstat
+        </table>
+    </div>
+    
+    <div class="col-lg-6">
+        <table class="table table-striped">
+          <tr>
+            <th>%online%</th>
+          </tr>
+          <tr>
+            <td>%now%</td>
+            <td>$online ($user_on, $guests_on)</td>
+          </tr>
+          <tr>
+            <td>%maximum%</td>
+            <td>$maxonline</td>
+          </tr>
+          <tr>
+            <td>%lasthour%</td>
+            <td>$online_lasthour</td>
+          </tr>
+        </table>
+    
+    
+        <table class="table table-striped">
+          <tr>
+            <th>%total_statistic%</th>
+          </tr>
+          <tr>
+            <td>%daysonline%</td>
+            <td>$days_online</td>
+          </tr>
+          <tr>
+            <td>%visits_month%</td>
+            <td>$permonth</td>
+          </tr>
+          <tr>
+            <td>%visits_day%</td>
+            <td>$perday</td>
+          </tr>
+          <tr>
+            <td>%visits_hour%</td>
+            <td>$perhour</td>
+          </tr>
+          <tr>
+            <td>%max_day%</td>
+            <td>$maxvisits</td>
+          </tr>
+        </table>
+    
+        <table class="table table-striped">
+          <tr>
+            <th>%user_statistic%</th>
+          </tr>
+          <tr>
+            <td>%avg_age%</td>
+            <td>$avg_age_user</td>
+          </tr>
+          <tr>
+            <td>%avg_age_clanmember%</td>
+            <td>$avg_age_member</td>
+          </tr>
+          <tr>
+            <td>%youngest_user%</td>
+            <td>
+                <a href='index.php?site=profile&amp;id=$get_young[userID]'>$get_young[nickname]</a><br>
+                ($get_young[age] %years%)
+            </td>
+          </tr>
+          <tr>
+            <td>%oldest_user%</td>
+            <td>
+                <a href='index.php?site=profile&amp;id=$get_old[userID]'>$get_old[nickname]</a><br>
+                ($get_old[age] %years%)
+            </td>
+          </tr>
+          <tr>
+            <td>%registered_users%</td>
+            <td>$us</td>
+          </tr>
+        </table>
+    </div>
+</div>

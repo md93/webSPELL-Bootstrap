@@ -1,6 +1,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 /* Responsive: Portrait tablets and up */
@@ -26,4 +26,9 @@ body {
 .add-on.captcha-img {
     height:25px!important;
     padding:2px 5px 1px!important;
+}
+
+section .thumbnail.pull-left {
+    margin-right:2em;
+    margin-bottom:2em;
 }

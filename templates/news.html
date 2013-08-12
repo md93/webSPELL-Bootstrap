@@ -1,22 +1,19 @@
 <article>
-    
     <header class="row">
-        <div class="col-lg-9">
-            <h3><small>$isintern</small> <a href="index.php?site=news_comments&amp;newsID=$newsID">$headline</a></h3>
-        </div>
+        <h3 class="col-lg-9"><small>$isintern</small> <a href="index.php?site=news_comments&amp;newsID=$newsID">$headline</a></h3>
         <a href="index.php?site=news&amp;show=$rubrikname" class="col-lg-3"><small>$rubrikname</small></a>
     </header>    
     
-    <section class="row">        
-        <div class="col-lg-4">
-                <div class="thumbnail">$rubricpic</div>
+    <section>        
+        <div>
+            <div class="thumbnail pull-left">$rubricpic</div>
         </div>
-        <div class="col-lg-8">      
+        <div>      
             <p>$content<br>$adminaction</p>
         </div>    
     </section>
         
-  <footer class="col-lg-12">
+    <footer class="col-lg-12">
     <p></p>
     <p>
       <i class="icon-user"></i> by $poster

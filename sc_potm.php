@@ -25,23 +25,10 @@
 ##########################################################################
 */
 
-if($userID) {
-	$name_settings = 'value="'.getinput(getnickname($userID)).'" readonly="readonly" ';
-	$captcha_form = '';
-}
-else {
-	$CAPCLASS = new Captcha;
-	$captcha = $CAPCLASS->create_captcha();
-	$hash = $CAPCLASS->get_hash();
-	$CAPCLASS->clear_oldcaptcha();
-	$captcha_form = '<div class="form-group"><div class="input-group"><span class="input-group-addon captcha-img">'.$captcha.'</span><input type="text" name="captcha" placeholder="Enter Captcha" class="form-control"><input name="captcha_hash" type="hidden" value="'.$hash.'"></div></div>';
-}
+$galclass = new Gallery;
 
-$_language->read_module('shoutbox');
+$_language->read_module('sc_potm');
 
-$refresh = $sbrefresh*1000;
-
-eval ("\$shoutbox = \"".gettemplate("shoutbox")."\";");
-echo $shoutbox;
-
+$randomid = $galclass->randompic();
+if($randomid) echo '<a href="index.php?site=gallery&amp;picID='.$randomid.'"><img src="images/gallery/thumb/'.$randomid.'.jpg" alt="'.$_language->module['random_picture'].'" class="img-responsive" /></a>';
 ?>
