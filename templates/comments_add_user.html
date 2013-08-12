@@ -18,15 +18,15 @@ function chkFormular() {
 -->
 </script>
 
-<form id="post" name="post" action="comments.php" method="post" onsubmit="return chkFormular()" class="form-horizontal">
+<form id="post" name="post" action="comments.php" method="post" onsubmit="return chkFormular()">
     
     <h4>%title_comment%</h4>
-    <div class="control-group">
-        <textarea name="message" id="message" rows="5" cols="50" style="width:99%;"></textarea>
+    <div class="form-group">
+        <textarea name="message" id="message" rows="3" class="form-control"></textarea>
     </div>
-    <div class="control-group">
+    <div class="form-group">
         <input type="submit" name="saveusercomment" value="%post_comment%" class="btn btn-primary" />
-        <small><b>%options%:</b> &#8226; %html_off% &#8226; %bbcode_on% &#8226; %smilies_on%</small>
+        <small class="pull-right">%bbcode_on% | %smilies_on%</small>
     </div>
     
     <input type="hidden" name="userID" value="$userID" />

@@ -1,9 +1,12 @@
 <form action="index.php?site=newsletter&amp;action=save" method="post" name="scnewsletter">
     <div class="form-group">
         <label class="form-label" for="email">%register_newsletter%</label>
-        <input name="email" type="email" value="$usermail" class="form-control" />
-    </div>
-    <div class="form-group">
-        <input name="post" type="submit" value="%submit%" class="btn btn-primary" />
+        
+        <div class="input-group">
+            <input name="email" type="email" value="$usermail" class="form-control">
+            <span class="input-group-btn">
+                <input name="post" type="submit" value="%submit%" class="btn btn-primary">
+            </span>
+        </div>
     </div>
 </form>

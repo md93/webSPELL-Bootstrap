@@ -35,7 +35,7 @@ if($loggedin) {
 	else $cashbox='';
 	$anz=getnewmessages($userID);
 	if($anz) {
-		$newmessages=' (<b>'.$anz.'</b>)';
+		$newmessages=$anz;
 	}
 	else $newmessages='';
 	if($getavatar = getavatar($userID)) $l_avatar='<img src="images/avatars/'.$getavatar.'" alt="Avatar" />';
