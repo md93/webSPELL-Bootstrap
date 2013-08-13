@@ -32,3 +32,11 @@ section .thumbnail.pull-left {
     margin-right:2em;
     margin-bottom:2em;
 }
+
+.ws_comments {
+    min-height:90px;   
+}
+                
+.ws_comments .avatar {
+    padding:0 15px 15px 0;                    
+}
