@@ -210,9 +210,9 @@ else {
 	}
 
 	if($type=="ASC")
-	$sorter='<a href="index.php?site=guestbook&amp;page='.$page.'&amp;type=DESC">'.$_language->module['sort'].'</a> <img src="images/icons/asc.gif" width="9" height="7" border="0" alt="Sort DESC" />&nbsp;&nbsp;&nbsp;';
+	$sorter='<a href="index.php?site=guestbook&amp;page='.$page.'&amp;type=DESC">'.$_language->module['sort'].' <i class="icon-sort-down"></i></a>';
 	else
-	$sorter='<a href="index.php?site=guestbook&amp;page='.$page.'&amp;type=ASC">'.$_language->module['sort'].'</a> <img src="images/icons/desc.gif" width="9" height="7" border="0" alt="Sort ASC" />&nbsp;&nbsp;&nbsp;';
+	$sorter='<a href="index.php?site=guestbook&amp;page='.$page.'&amp;type=ASC">'.$_language->module['sort'].' <i class="icon-sort-up"></i></a>';
 
 	eval ("\$guestbook_head = \"".gettemplate("guestbook_head")."\";");
 	echo $guestbook_head;
@@ -221,15 +221,15 @@ else {
 		$n%2 ? $bg1=BG_1 : $bg1=BG_2;
 		$date = date("d.m.Y - H:i", $ds['date']);
 
-		if(validate_email($ds['email'])) $email = '<a href="mailto:'.mail_protect($ds['email']).'"><img src="images/icons/email.gif" border="0" width="15" height="11" alt="email" /></a>';
+		if(validate_email($ds['email'])) $email = '<a href="mailto:'.mail_protect($ds['email']).'"><img src="images/icons/email.gif" alt="email"></a>';
 		else $email='';
 
-		if(validate_url($ds['hp'])) $hp='<a href="'.$ds['hp'].'" target="_blank"><img src="images/icons/hp.gif" border="0" width="14" height="14" alt="homepage" /></a>';
+		if(validate_url($ds['hp'])) $hp='<a href="'.$ds['hp'].'" target="_blank"><img src="images/icons/hp.gif" alt="homepage" /></a>';
 		else $hp='';
 
 		$sem = '/[0-9]{6,11}/si';
 		$icq_number = str_replace('-','',$ds['icq']);
-		if(preg_match($sem, $ds['icq'])) $icq = '<a href="http://www.icq.com/people/about_me.php?uin='.$icq_number.'" target="_blank"><img src="http://online.mirabilis.com/scripts/online.dll?icq='.$ds['icq'].'&amp;img=5" border="0" alt="icq" /></a>';
+		if(preg_match($sem, $ds['icq'])) $icq = '<a href="http://www.icq.com/people/about_me.php?uin='.$icq_number.'" target="_blank"><img src="http://online.mirabilis.com/scripts/online.dll?icq='.$ds['icq'].'&amp;img=5" alt="icq" /></a>';
 		else $icq="";
 		$guestbookID = 'id_'.$ds['gbID'];
 		$name = strip_tags($ds['name']);
@@ -238,14 +238,14 @@ else {
 		unset($admincomment);
 		if($ds['admincomment'] != "") {
 			$admincomment = '<hr />
-			<small><b>'.$_language->module['admin_comment'].':</b><br />'.cleartext($ds['admincomment']).'</small>';
+			<small><b>'.$_language->module['admin_comment'].':</b><br>'.cleartext($ds['admincomment']).'</small>';
 		} else $admincomment = '';
 
 		$actions='';
 		$ip='logged';
-		$quote='<a href="index.php?site=guestbook&amp;action=add&amp;messageID='.$ds['gbID'].'"><img src="images/icons/quote.gif" border="0" alt="quote" /></a>';
+		$quote='<a href="index.php?site=guestbook&amp;action=add&amp;messageID='.$ds['gbID'].'"><i class="icon-quote-left"></i></a>';
 		if(isfeedbackadmin($userID)) {
-			$actions=' <a href="index.php?site=guestbook&amp;action=comment&amp;guestbookID='.$ds['gbID'].'"><img src="images/icons/admincomment.gif" border="0" alt="Admincomment" /></a> <input class="input" type="checkbox" name="gbID[]" value="'.$ds['gbID'].'" />';
+			$actions='<input class="input" type="checkbox" name="gbID[]" value="'.$ds['gbID'].'"> <a href="index.php?site=guestbook&amp;action=comment&amp;guestbookID='.$ds['gbID'].'" class="btn btn-danger">Add Admincomment</a>';
 			$ip=$ds['ip'];
 		}
 
@@ -256,8 +256,8 @@ else {
 		else $n++;
 	}
 
-	if(isfeedbackadmin($userID)) $submit='<input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);" /> '.$_language->module['select_all'].'
-  <input type="submit" value="'.$_language->module['delete_selected'].'" />';
+	if(isfeedbackadmin($userID)) $submit='<input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);"> '.$_language->module['select_all'].'
+  <input type="submit" value="'.$_language->module['delete_selected'].'" class="btn btn-danger">';
 	else $submit='';
 
 	eval ("\$guestbook_foot = \"".gettemplate("guestbook_foot")."\";");
