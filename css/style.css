@@ -23,7 +23,7 @@ body {
     text-align: center;
 }
 
-.add-on.captcha-img {
+.add-on.captcha-img, .input-group-addon.captcha-img {
     height:25px!important;
     padding:2px 5px 1px!important;
 }
