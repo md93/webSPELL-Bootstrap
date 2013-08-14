@@ -49,7 +49,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 <!-- Head & Title include -->
 <title><?php echo PAGETITLE; ?></title>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo getinput($myclanname); ?> - RSS Feed">
@@ -61,14 +61,16 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php"><?php echo $myclanname ?></a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php"><?php echo $myclanname ?></a>
+            </div>
             
-            <div class="nav-collapse collapse"> 
+            <div class="navbar-collapse collapse"> 
                 <?php include("navigation.php"); ?>
                 
                 <?php include("quicksearch.php"); ?>
@@ -90,7 +92,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         <div class="row">
 
             <!-- left column -->
-            <div id="leftcol" class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"col-lg-3 hidden-sm"; ?>">
+            <div id="leftcol" class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"col-lg-3 visible-lg"; ?>">
                 <hr class="grey">
                 <!-- poll include -->
                 <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br>
@@ -139,7 +141,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             </div>
             
             <!-- main content area -->
-            <div id="maincol" class="<?php if(in_array($site, $hide1)) echo "col-lg-9"; else echo"col-lg-6"; ?>">
+            <div id="maincol" class="<?php if(in_array($site, $hide1)) echo "col-lg-9"; else echo"col-lg-6 col-md-9"; ?>">
                 <?php
                     if(!isset($site)) $site="news";
                     $invalide = array('\\','/','/\/',':','.');
@@ -150,13 +152,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             </div>
              
             <!-- right column -->
-            <div id="rightcol" class="col-lg-3">
+            <div id="rightcol" class="col-sm-3">
                 <!-- login include -->
                 <div>
                     <b><?php echo $myclanname.".".$index_language['login']; ?></b><br>
                     <?php include("login.php"); ?>
                 </div>
-                <div class="hidden-sm">
+                <div>
                     <hr class="grey">
                     <b><?php echo $myclanname.".".$index_language['topics']; ?></b><br>
                     <?php include("latesttopics.php"); ?>
@@ -166,7 +168,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     <b><?php echo $myclanname.".".$index_language['hotest_news']; ?></b><br>
                     <?php include("sc_topnews.php"); ?>
                 </div>
-                <div class="hidden-sm <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+                <div class="<?php if(in_array($site, $hide1)) echo "hidden"; ?>">
                     <hr class="grey">
                     <!-- headlines include -->
                     <b><?php echo $myclanname.".".$index_language['latest_news']; ?></b><br>
@@ -227,7 +229,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     </div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
 <script src="js/wSBs.js" type="text/javascript"></script>
 
 </body>
