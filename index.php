@@ -82,17 +82,19 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 <div class="ws_main_wrapper">    
     
     <div class="container">
-
-        <div class="jumbotron hidden-sm <?php if(in_array($site, $hide1)) echo "hidden"; ?>">
+        
+<?php if(!in_array($site, $hide1)) { ?>
+        <div class="jumbotron hidden-sm">
             <h1>webSPELL Bootstrap</h1>
             <p>Free Template, build by you.</p>
             <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-primary btn-large">» View on GitHub</a></p>
         </div>
-    
+<?php } ?>    
         <div class="row">
 
+<?php if(!in_array($site, $hide1)) { // show left column ?>
             <!-- left column -->
-            <div id="leftcol" class="<?php if(in_array($site, $hide1)) echo "hidden"; else echo"col-lg-3 visible-lg"; ?>">
+            <div id="leftcol" class="col-lg-3 visible-lg">
                 <hr class="grey">
                 <!-- poll include -->
                 <b><?php echo $myclanname.".".$index_language['poll']; ?></b><br>
@@ -139,9 +141,9 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <center><?php include("partners.php"); ?></center>
                 <!-- end partners include -->
             </div>
-            
+<?php } // end of show left column ?>            
             <!-- main content area -->
-            <div id="maincol" class="<?php if(in_array($site, $hide1)) echo "col-lg-9"; else echo"col-lg-6 col-md-9"; ?>">
+            <div id="maincol" class="<?php if(in_array($site, $hide1)) echo "col-lg-9 col-sm-9 col-xs-12"; else echo"col-lg-6 col-sm-9 col-xs-12"; ?>">
                 <?php
                     if(!isset($site)) $site="news";
                     $invalide = array('\\','/','/\/',':','.');
@@ -152,7 +154,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             </div>
              
             <!-- right column -->
-            <div id="rightcol" class="col-sm-3">
+            <div id="rightcol" class="col-md-3 col-sm-3 hidden-xs">
                 <!-- login include -->
                 <div>
                     <b><?php echo $myclanname.".".$index_language['login']; ?></b><br>
