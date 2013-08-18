@@ -294,7 +294,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 	echo $forum_topics_actions;
 
 	if($dt['closed']) {
-		echo'<br><br>'.$_language->module['closed_image'].'<br><br>';
+		echo'<div class="alert alert-danger">'.$_language->module['closed_image'].'</div>';
 	}
 
 	if($edit && !$dt['closed']) {
@@ -331,45 +331,42 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 				}
 
 				// topic icon list
-				$iconlist = '<tr>
-          <td><input type="radio" class="input" name="icon" value="ausrufezeichen.gif">
-          <img src="images/icons/topicicons/ausrufezeichen.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="biggrin.gif">
-          <img src="images/icons/topicicons/biggrin.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="boese.gif">
-          <img src="images/icons/topicicons/boese.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="bored.gif">
-          <img src="images/icons/topicicons/bored.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="cool.gif">
-          <img src="images/icons/topicicons/cool.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="eek.gif">
-          <img src="images/icons/topicicons/eek.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="frage.gif">
-          <img src="images/icons/topicicons/frage.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="frown.gif">
-          <img src="images/icons/topicicons/frown.gif" width="15" height="15" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="radio" class="input" name="icon" value="lampe.gif">
-          <img src="images/icons/topicicons/lampe.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="mad.gif">
-          <img src="images/icons/topicicons/mad.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="pfeil.gif">
-          <img src="images/icons/topicicons/pfeil.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="smile.gif">
-          <img src="images/icons/topicicons/smile.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="text.gif">
-          <img src="images/icons/topicicons/text.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="thumb_down.gif">
-          <img src="images/icons/topicicons/thumb_down.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="thumb_up.gif">
-          <img src="images/icons/topicicons/thumb_up.gif" width="15" height="15" alt=""></td>
-          <td><input type="radio" class="input" name="icon" value="wink.gif">
-          <img src="images/icons/topicicons/wink.gif" width="15" height="15" alt=""></td>
-        </tr>
-        <tr>
-            <td colspan="4"><input type="radio" class="input" name="icon" value="0"> '.$_language->module['no_icon'].'</td>
-          </tr>';
+				$iconlist = '<ul class="nav nav-pills nav-justified">
+        <li><input type="radio" class="input" name="icon" value="ausrufezeichen.gif">
+        <img src="images/icons/topicicons/ausrufezeichen.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="biggrin.gif">
+        <img src="images/icons/topicicons/biggrin.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="boese.gif">
+        <img src="images/icons/topicicons/boese.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="bored.gif">
+        <img src="images/icons/topicicons/bored.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="cool.gif">
+        <img src="images/icons/topicicons/cool.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="eek.gif">
+        <img src="images/icons/topicicons/eek.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="frage.gif">
+        <img src="images/icons/topicicons/frage.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="frown.gif">
+        <img src="images/icons/topicicons/frown.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="lampe.gif">
+        <img src="images/icons/topicicons/lampe.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="mad.gif">
+        <img src="images/icons/topicicons/mad.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="pfeil.gif">
+        <img src="images/icons/topicicons/pfeil.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="smile.gif">
+        <img src="images/icons/topicicons/smile.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="text.gif">
+        <img src="images/icons/topicicons/text.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="thumb_down.gif">
+        <img src="images/icons/topicicons/thumb_down.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="thumb_up.gif">
+        <img src="images/icons/topicicons/thumb_up.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="wink.gif">
+        <img src="images/icons/topicicons/wink.gif"></li>
+        <li><input type="radio" class="input" name="icon" value="0">
+        '.$_language->module['no_icon'].'</li>
+        </ul>';
 				if($dt['icon'])	$iconlist = str_replace('value="'.$dt['icon'].'"', 'value="'.$dt['icon'].'" checked="checked"', $iconlist);
 				else $iconlist = str_replace('value="0"', 'value="0" checked="checked"', $iconlist);
 				eval ("\$addbbcode = \"".gettemplate("addbbcode")."\";");
@@ -386,7 +383,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 				}
         //STICKY
 				if(isforumadmin($userID) || ismoderator($userID, $board)) {
-					$chk_sticky = '<br>'."\n".' <input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
+					$chk_sticky = '<input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
 				}
 				else {
 					$chk_sticky = '';
@@ -398,7 +395,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 			}
 		}
 		else {
-			echo $_language->module['permission_denied'].'<br><br>';
+			echo '<div class="alert alert-danger">'.$_language->module['permission_denied'].'</div>';
 		}
 
 		$replys = safe_query("SELECT * FROM ".PREFIX."forum_posts WHERE topicID='$topic' ORDER BY date DESC LIMIT $start, $max");
@@ -422,7 +419,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 
 				if(isclanmember($userID)) $member=' <img src="images/icons/member.gif" alt="'.$_language->module['clanmember'].'">';
 				else $member='';
-				if($getavatar = getavatar($userID)) $avatar='<img src="images/avatars/'.$getavatar.'" alt="">';
+				if($getavatar = getavatar($userID)) $avatar='<img src="images/avatars/'.$getavatar.'">';
 				else $avatar='';
 				if($getsignatur = getsignatur($userID)) $signatur=cleartext($getsignatur);
 				else $signatur='';
@@ -443,20 +440,20 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 
 				if(isforumadmin($userID)) {
 					$usertype=$_language->module['admin'];
-					$rang='<img src="images/icons/ranks/admin.gif" alt="">';
+					$rang='<img src="images/icons/ranks/admin.gif">';
 				}
 				elseif(isanymoderator($userID)) {
 					$usertype=$_language->module['moderator'];
-					$rang='<img src="images/icons/ranks/moderator.gif" alt="">';
+					$rang='<img src="images/icons/ranks/moderator.gif">';
 				} else {
 					$ergebnis=safe_query("SELECT * FROM ".PREFIX."forum_ranks WHERE $posts >= postmin AND $posts <= postmax AND postmax >0");
 					$ds=mysql_fetch_array($ergebnis);
 					$usertype=$ds['rank'];
-					$rang='<img src="images/icons/ranks/'.$ds['pic'].'" alt="">';
+					$rang='<img src="images/icons/ranks/'.$ds['pic'].'">';
 				}
 				
-				if(isforumadmin($userID)) $chk_sticky = '<br>'."\n".' <input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
-				elseif(isanymoderator($userID)) $chk_sticky = '<br>'."\n".' <input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
+				if(isforumadmin($userID)) $chk_sticky = '<input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
+				elseif(isanymoderator($userID)) $chk_sticky = '<input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
 				else $chk_sticky = '';
 				$quote = "";
 				$actions = "";
@@ -484,7 +481,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 			else $post_sticky = null;
 			$_sticky = ($dt['sticky'] == '1' || $post_sticky == '1') ? 'checked="checked"' : '';
 			if(isforumadmin($userID) || ismoderator($userID, $dt['boardID'])) {
-				$chk_sticky = '<br>'."\n".' <input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
+				$chk_sticky = '<input class="input" type="checkbox" name="sticky" value="1" '.$_sticky.'> '.$_language->module['make_sticky'];
 			}
 			else {
 				$chk_sticky = '';
@@ -504,10 +501,10 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 			echo $forum_newreply;
 		}
 		elseif($loggedin) {
-			echo'<br><br>'.$_language->module['no_access_write'].'<br><br>';
+			echo '<div class="alert alert-danger">'.$_language->module['no_access_write'].'</div>';
 		}
 		else {
-			echo $_language->module['not_logged_msg'];
+			echo '<div class="alert alert-danger">'.$_language->module['not_logged_msg'].'</div>';
 		}
 		$replys = safe_query("SELECT * FROM ".PREFIX."forum_posts WHERE topicID='$topic' ORDER BY date DESC LIMIT 0, ".$max."");
 	}
@@ -545,7 +542,7 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 		if(isclanmember($dr['poster'])) $member=' <img src="images/icons/member.gif" alt="'.$_language->module['clanmember'].'">';
 		else $member='';
 
-		if($getavatar = getavatar($dr['poster'])) $avatar='<img src="images/avatars/'.$getavatar.'" alt="">';
+		if($getavatar = getavatar($dr['poster'])) $avatar='<img src="images/avatars/'.$getavatar.'">';
 		else $avatar='';
 
 		if($getsignatur = getsignatur($dr['poster'])) $signatur=cleartext($getsignatur);
@@ -578,16 +575,16 @@ function showtopic($topic, $edit, $addreply, $quoteID, $type) {
 
 		if(isforumadmin($dr['poster'])) {
 			$usertype=$_language->module['admin'];
-			$rang='<img src="images/icons/ranks/admin.gif" alt="">';
+			$rang='<img src="images/icons/ranks/admin.gif">';
 		}
 		elseif(isanymoderator($dr['poster'])) {
 			$usertype=$_language->module['moderator'];
-			$rang='<img src="images/icons/ranks/moderator.gif" alt="">';
+			$rang='<img src="images/icons/ranks/moderator.gif">';
 		} else {
 			$ergebnis=safe_query("SELECT * FROM ".PREFIX."forum_ranks WHERE $posts >= postmin AND $posts <= postmax AND postmax >0");
 			$ds=mysql_fetch_array($ergebnis);
 			$usertype=$ds['rank'];
-			$rang='<img src="images/icons/ranks/'.$ds['pic'].'" alt="">';
+			$rang='<img src="images/icons/ranks/'.$ds['pic'].'">';
 		}
 
 		$actions='';
