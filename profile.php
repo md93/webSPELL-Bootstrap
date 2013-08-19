@@ -64,7 +64,7 @@ if(isset($id) and getnickname($id) != '') {
         
         $buddylist .= '<tr bgcolor="'.$bgcolor.'">
             <td>
-            <table width="100%" cellpadding="0" cellspacing="0">
+            <table>
               <tr>
                 <td>'.$country.' <a href="index.php?site=profile&amp;id='.$db['buddy'].'"><b>'.$nicknamebuddy.'</b></a></td>
                 <td align="right">'.$email.'&nbsp;&nbsp;'.$buddy.'&nbsp;&nbsp;'.$statuspic.'</td>
@@ -98,16 +98,15 @@ if(isset($id) and getnickname($id) != '') {
 
 		$galleries = safe_query("SELECT * FROM ".PREFIX."gallery WHERE userID='".$id."'");
 
-		echo '<br /><table width="100%" cellpadding="2" cellspacing="0" bgcolor="'.$border.'">
+		echo '<table class="table">
       <tr>
-        <td class="title" colspan="4">&nbsp;&#8226; '.$_language->module['galleries'].' '.$_language->module['by'].' '.getnickname($id).'</td>
+        <td colspan="4">'.$_language->module['galleries'].' '.$_language->module['by'].' '.getnickname($id).'</td>
       </tr>
-      <tr><td bgcolor="'.$pagebg.'" colspan="4"></td></tr>
-      <tr bgcolor="'.$bgcat.'">
-        <td width="100">&nbsp;</td>
-        <td width="100"><b>'.$_language->module['date'].'</b></td>
+      <tr>
+        <td></td>
+        <td><b>'.$_language->module['date'].'</b></td>
         <td><b>'.$_language->module['name'].'</b></td>
-        <td width="80"><b>'.$_language->module['pictures'].'</b></td>
+        <td><b>'.$_language->module['pictures'].'</b></td>
       </tr>';
 
 		if($usergalleries) {
@@ -133,11 +132,11 @@ if(isset($id) and getnickname($id) != '') {
 				}
 			}
 			else echo '<tr>
-          <td colspan="4" bgcolor="'.BG_1.'">'.$_language->module['no_galleries'].'</td>
+          <td colspan="4">'.$_language->module['no_galleries'].'</td>
         </tr>';
 		}
 		else echo '<tr>
-        <td colspan="4" bgcolor="'.BG_1.'">'.$_language->module['usergalleries_disabled'].'</td>
+        <td colspan="4">'.$_language->module['usergalleries_disabled'].'</td>
       </tr>';
 
 		echo '</table>';
@@ -321,16 +320,12 @@ if(isset($id) and getnickname($id) != '') {
 			}
 
 			if($type=="ASC")
-			$sorter='<a href="index.php?site=profile&amp;id='.$id.'&amp;action=guestbook&amp;page='.$page.'&amp;type=DESC">'.$_language->module['sort'].':</a> <img src="images/icons/asc.gif" width="9" height="7" border="0" alt="" />&nbsp;&nbsp;&nbsp;';
+			$sorter='<a href="index.php?site=profile&amp;id='.$id.'&amp;action=guestbook&amp;page='.$page.'&amp;type=DESC">'.$_language->module['sort'].' <i class="icon-sort-down"></i></a>';
 			else
-			$sorter='<a href="index.php?site=profile&amp;id='.$id.'&amp;action=guestbook&amp;page='.$page.'&amp;type=ASC">'.$_language->module['sort'].':</a> <img src="images/icons/desc.gif" width="9" height="7" border="0" alt="" />&nbsp;&nbsp;&nbsp;';
+			$sorter='<a href="index.php?site=profile&amp;id='.$id.'&amp;action=guestbook&amp;page='.$page.'&amp;type=ASC">'.$_language->module['sort'].' <i class="icon-sort-up"></i></a>';
 
-			echo'<br /><table width="100%" cellspacing="0" cellpadding="2">
-			  <tr>
-			    <td>'.$sorter.' '.$page_link.'</td>
-			    <td align="right"><input type="button" onclick="MM_goToURL(\'parent\',\'#addcomment\');return document.MM_returnValue" value="'.$_language->module['new_entry'].'" /></td>
-			  </tr>
-			</table>';
+			echo '<div class="row form-group"><div class="col-xs-6">'.$sorter.' '.$page_link.'</div>
+            <div class="col-xs-6 text-right"><input type="button" onclick="MM_goToURL(\'parent\',\'#addcomment\');return document.MM_returnValue" value="'.$_language->module['new_entry'].'" class="btn btn-primary"></div></div>';
 
 			echo '<form method="post" name="form" action="index.php?site=profile&amp;id='.$id.'&amp;action=guestbook&amp;delete=true">';
 			while ($ds = mysql_fetch_array($ergebnis)) {
@@ -355,9 +350,9 @@ if(isset($id) and getnickname($id) != '') {
 
 				$actions = '';
 				$ip = $_language->module['logged'];
-				$quote = '<a href="javascript:AddCode(\'[quote='.$name.']'.$quotemessage.'[/quote]\')"><img src="images/icons/quote.gif" border="0" alt="'.$_language->module['quote'].'" /></a>';
+				$quote = '<a href="javascript:AddCode(\'[quote='.$name.']'.$quotemessage.'[/quote]\')"> <i class="icon-quote-left"></i></a>';
 				if(isfeedbackadmin($userID) OR $id == $userID) {
-					$actions = '<input class="input" type="checkbox" name="gbID[]" value="'.$ds['gbID'].'" />';
+					$actions = '<input class="input" type="checkbox" name="gbID[]" value="'.$ds['gbID'].'">';
 					if(isfeedbackadmin($userID)) $ip = $ds['ip'];
 				}
 
@@ -368,10 +363,10 @@ if(isset($id) and getnickname($id) != '') {
 				else $n++;
 			}
 
-			if(isfeedbackadmin($userID) || $userID == $id) $submit='<input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);" /> '.$_language->module['select_all'].'
-											  <input type="submit" value="'.$_language->module['delete_selected'].'" />';
+			if(isfeedbackadmin($userID) || $userID == $id) $submit='<input class="input" type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);"> '.$_language->module['select_all'].'
+											  <input type="submit" value="'.$_language->module['delete_selected'].'" class="btn btn-danger">';
 											  else $submit='';
-			echo'<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			echo'<table>
 			<tr>
 	  		<td>'.$page_link.'</td>
 	   		<td align="right">'.$submit.'</td>
@@ -581,22 +576,16 @@ if(isset($id) and getnickname($id) != '') {
 					$minutes == 0 ? $minutes = "" : $minutes = $minutes.'m';
 				}
 
-				$lastvisits .= '<tr bgcolor="'.$bgcolor.'">
-          <td>
-          <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
+				$lastvisits .= '<tr>
               <td>'.$country.' <a href="index.php?site=profile&amp;id='.$dv['visitor'].'"><b>'.$nicknamevisitor.'</b></a></td>
-              <td align="right"><small>'.$now.$days.$hours.$minutes.' '.$statuspic.'</small></td>
-            </tr>
-          </table>
-          </td>
-        </tr>';
+              <td><small>'.$now.$days.$hours.$minutes.' '.$statuspic.'</small></td>
+            </tr>';
         
 				$n++;
 			}
 		}
 		else $lastvisits = '<tr>
-      <td colspan="3" bgcolor="'.BG_1.'">'.$_language->module['no_visits'].'</td>
+      <td colspan="2">'.$_language->module['no_visits'].'</td>
     </tr>';
 	 
 		$bg1 = BG_1;

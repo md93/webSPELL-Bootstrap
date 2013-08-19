@@ -87,7 +87,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         <div class="jumbotron hidden-sm">
             <h1>webSPELL Bootstrap</h1>
             <p>Free Template, build by you.</p>
-            <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-primary btn-large">» View on GitHub</a></p>
+            <p><a href="https://github.com/Pascalmh/webSPELL-Bootstrap/" class="btn btn-info btn-lg">» Fork on GitHub</a></p>
         </div>
 <?php } ?>    
         <div class="row">
