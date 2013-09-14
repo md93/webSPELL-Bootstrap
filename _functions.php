@@ -75,7 +75,7 @@ function gettemplate($template,$endung="html", $calledfrom="root") {
 }
 
 function makepagelink($link, $page, $pages, $sub='') {
-	$page_link = '<div class="pagination"><ul>';
+	$page_link = '<ul class="pagination">';
 
 	if($page != 1) $page_link .= '<li><a href="'.$link.'&amp;'.$sub.'page=1">&laquo;</a></li><li><a href="'.$link.'&amp;'.$sub.'page='.($page-1).'">&lsaquo;</a></li>';
 	if($page >= 6) $page_link .= '<li><a href="'.$link.'&amp;'.$sub.'page='.($page-5).'">...</a></li>';
@@ -88,7 +88,7 @@ function makepagelink($link, $page, $pages, $sub='') {
 	}
 	if(($pages-$page) >= 5) $page_link .= '<li><a href="'.$link.'&amp;'.$sub.'page='.($page+5).'">...</a></li>';
 	if($page != $pages) $page_link .= '<li><a href="'.$link.'&amp;'.$sub.'page='.($page+1).'">&rsaquo;</a></li><li><a href="'.$link.'&amp;'.$sub.'page='.$pages.'">&raquo;</a></li>';
-	$page_link .= '</ul></div>';
+	$page_link .= '</ul>';
 
 	return $page_link;
 }
