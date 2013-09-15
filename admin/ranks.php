@@ -33,7 +33,7 @@ if(isset($_GET['delete'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query(" DELETE FROM ".PREFIX."forum_ranks WHERE rankID='".$_GET['rankID']."' ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['save'])) {
@@ -62,7 +62,7 @@ elseif(isset($_POST['save'])) {
 				safe_query("UPDATE ".PREFIX."forum_ranks SET pic='$file' WHERE rankID='$id' ");
 			}
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -89,7 +89,7 @@ elseif(isset($_POST['saveedit'])) {
 				}
 			}
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -100,7 +100,7 @@ if($action=="add") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=ranks" class="white">'.$_language->module['user_ranks'].'</a> &raquo; '.$_language->module['add_rank'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=ranks" class="white">'.$_language->module['user_ranks'].'</a> &raquo; '.$_language->module['add_rank'].'</h3>';
 
   echo'<form method="post" action="admincenter.php?site=ranks" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -130,7 +130,7 @@ if($action=="add") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['user_ranks'].'</h1>';
+  echo'<h3>'.$_language->module['user_ranks'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=ranks&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_rank'].'" /><br /><br />';
 	

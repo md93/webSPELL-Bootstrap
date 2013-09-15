@@ -135,7 +135,7 @@ if(isset($_GET['action'])) {
 		$pages = ceil($anz_users / $anz_users_page);
 		if($pages > 1) echo makepagelink("admincenter.php?site=group-users&amp;action=show&amp;users=".implode("-", $_POST['users'])."&amp;groups=".implode("-", $_POST['groups'])."&amp;addfield=".$_POST['addfield'], $page, $pages);
 		
-    echo'<h1>&curren; <a href="admincenter.php?site=group-users" class="white">'.$_language->module['group_users'].'</a> &raquo; '.$_language->module['edit_group_users'].'</h1>';
+    echo'<h3><a href="admincenter.php?site=group-users" class="white">'.$_language->module['group_users'].'</a> &raquo; '.$_language->module['edit_group_users'].'</h3>';
     echo'<script type="text/javascript">
     function setUser(userID,group,status){
     	fetch("group-users.php?ajax=true&action=usergroups&user="+userID+"&group="+group+"&state="+status,"","return","event");
@@ -217,7 +217,7 @@ else {
 		$selector=1;
 	}
 
-	echo'<h1>&curren; '.$_language->module['group_users'].'</h1>';
+	echo'<h3>'.$_language->module['group_users'].'</h3>';
   
   echo '<script type="text/javascript">
   /*<![CDATA[*/

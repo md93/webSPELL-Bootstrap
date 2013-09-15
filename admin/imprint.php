@@ -29,7 +29,7 @@ $_language->read_module('imprint');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['imprint'].'</h1>';
+echo'<h3>'.$_language->module['imprint'].'</h3>';
 
 if(isset($_POST['submit'])) {
 	$imprint = $_POST['message'];
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
 		if(mysql_num_rows(safe_query("SELECT * FROM `".PREFIX."imprint`"))) safe_query("UPDATE `".PREFIX."imprint` SET imprint='$imprint'");
 		else safe_query("INSERT INTO `".PREFIX."imprint` (imprint) values( '$imprint') ");
 		redirect("admincenter.php?site=imprint", "", 0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 else {

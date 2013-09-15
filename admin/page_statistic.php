@@ -29,7 +29,7 @@ $_language->read_module('page_statistic');
 
 if(!isanyadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['page_stats'].'</h1>';
+echo'<h3>'.$_language->module['page_stats'].'</h3>';
 
 $count_array = array();
 $tables_array = array(PREFIX."articles", PREFIX."banner", PREFIX."awards", PREFIX."bannerrotation", PREFIX."challenge", PREFIX."clanwars", PREFIX."comments", PREFIX."contact", PREFIX."countries", PREFIX."demos", PREFIX."faq", PREFIX."faq_categories", PREFIX."files", PREFIX."files_categorys", PREFIX."forum_announcements", PREFIX."forum_boards", PREFIX."forum_categories", PREFIX."forum_groups", PREFIX."forum_moderators", PREFIX."forum_posts", PREFIX."forum_ranks", PREFIX."forum_topics", PREFIX."gallery", PREFIX."gallery_groups", PREFIX."gallery_pictures", PREFIX."games", PREFIX."guestbook", PREFIX."links", PREFIX."links_categorys", PREFIX."linkus", PREFIX."messenger", PREFIX."news", PREFIX."news_languages", PREFIX."news_rubrics", PREFIX."partners", PREFIX."poll", PREFIX."servers", PREFIX."shoutbox", PREFIX."smileys", PREFIX."sponsors", PREFIX."squads", PREFIX."static", PREFIX."user", PREFIX."user_gbook");

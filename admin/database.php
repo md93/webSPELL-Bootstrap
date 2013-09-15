@@ -46,7 +46,7 @@ if(isset($_POST['upload'])) {
 			foreach($new_query as $query) @mysql_query($query);
 			@unlink('../tmp/'.$upload['name']);
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 
 }
 /*elseif(isset($_POST['query'])) {
@@ -71,7 +71,7 @@ if($action=="optimize") {
   
   $_language->read_module('database');
   
-  echo'<h1>&curren; '.$_language->module['database'].'</h1>';
+  echo'<h3>'.$_language->module['database'].'</h3>';
   
   if(!ispageadmin($userID) or mb_substr(basename($_SERVER['REQUEST_URI']), 0, 15) != "admincenter.php") die($_language->module['access_denied']);
   
@@ -187,7 +187,7 @@ else {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; '.$_language->module['database'].'</h1>';
+  echo'<h3>'.$_language->module['database'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=database" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD">

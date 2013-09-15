@@ -81,7 +81,7 @@ if(isset($_POST['save'])) {
  	 	$CAPCLASS = new Captcha;
 		if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 			safe_query("INSERT INTO ".PREFIX."files_categorys ( name, subcatID ) values( '".$_POST['name']."', '".$_POST['subcat']."' ) ");
-		} else echo $_language->module['transaction_invalid'];
+		} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 	}
 	else{
 	 	redirect("admincenter.php?site=filecategorys&amp;action=add", $_language->module['enter_name'], 3);
@@ -93,7 +93,7 @@ elseif(isset($_POST['saveedit'])) {
 	 	$CAPCLASS = new Captcha;
 		if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 			safe_query("UPDATE ".PREFIX."files_categorys SET name='".$_POST['name']."', subcatID = '".$_POST['subcat']."' WHERE filecatID='".$_POST['filecatID']."'");
-		} else echo $_language->module['transaction_invalid'];
+		} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 	}
 	else{
 	 	redirect("admincenter.php?site=filecategorys&amp;action=edit&amp;filecatID=".$_POST['filecatID'], $_language->module['enter_name'], 3);
@@ -105,7 +105,7 @@ elseif(isset($_GET['delete'])) {
 	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		delete_category($filecatID);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(!isset($_GET['action'])) {
@@ -129,7 +129,7 @@ if($_GET['action']=="add") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=filecategorys" class="white">'.$_language->module['file_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=filecategorys" class="white">'.$_language->module['file_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h3>';
   
 	echo'<form method="post" action="admincenter.php?site=filecategorys">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -175,7 +175,7 @@ elseif($_GET['action']=="edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
 	
-	echo'<h1>&curren; <a href="admincenter.php?site=filecategorys" class="white">'.$_language->module['file_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=filecategorys" class="white">'.$_language->module['file_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=filecategorys" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -197,7 +197,7 @@ elseif($_GET['action']=="edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['file_categories'].'</h1>';
+  echo'<h3>'.$_language->module['file_categories'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=filecategorys&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_category'].'" /><br /><br />';
 

@@ -40,14 +40,14 @@ if(isset($_POST['save'])) {
 			safe_query("INSERT INTO `".PREFIX."static` ( `name`, `accesslevel`,`content` ) values( '".$_POST['name']."', '".$_POST['accesslevel']."','".$_POST['message']."' ) ");
 			$id = mysql_insert_id();
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delete'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM `".PREFIX."static` WHERE staticID='".$_GET['staticID']."'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action']) and $_GET['action'] == "add") {
@@ -56,7 +56,7 @@ if(isset($_GET['action']) and $_GET['action'] == "add") {
 	$hash = $CAPCLASS->get_hash();
   $_language->read_module('bbcode', true);
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=static" class="white">'.$_language->module['static_pages'].'</a> &raquo; '.$_language->module['add_static_page'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=static" class="white">'.$_language->module['static_pages'].'</a> &raquo; '.$_language->module['add_static_page'].'</h3>';
   
   echo '<script language="JavaScript" type="text/javascript">
 					<!--
@@ -120,7 +120,7 @@ elseif(isset($_GET['action']) and $_GET['action'] == "edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
 	
-	echo'<h1>&curren; <a href="admincenter.php?site=static" class="white">'.$_language->module['static_pages'].'</a> &raquo; '.$_language->module['edit_static_page'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=static" class="white">'.$_language->module['static_pages'].'</a> &raquo; '.$_language->module['edit_static_page'].'</h3>';
 	
 	echo '<script language="JavaScript" type="text/javascript">
 					<!--
@@ -165,7 +165,7 @@ elseif(isset($_GET['action']) and $_GET['action'] == "edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['static_pages'].'</h1>';
+  echo'<h3>'.$_language->module['static_pages'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=static&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_static_page'].'" /><br /><br />';
 

@@ -35,7 +35,7 @@ if(isset($_GET['delcat'])) {
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."faq WHERE faqcatID='$faqcatID'");
 		safe_query("DELETE FROM ".PREFIX."faq_categories WHERE faqcatID='$faqcatID'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['sortieren'])) {
@@ -48,7 +48,7 @@ elseif(isset($_POST['sortieren'])) {
 				safe_query("UPDATE ".PREFIX."faq_categories SET sort='$sorter[1]' WHERE faqcatID='$sorter[0]' ");
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['savecat'])) {
@@ -58,7 +58,7 @@ elseif(isset($_POST['savecat'])) {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		if(checkforempty(Array('faqcatname'))) safe_query("INSERT INTO ".PREFIX."faq_categories ( faqcatname, description, sort ) values( '$faqcatname', '$description', '1' )");
 		else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveeditcat'])) {
@@ -69,7 +69,7 @@ elseif(isset($_POST['saveeditcat'])) {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		if(checkforempty(Array('faqcatname'))) safe_query("UPDATE ".PREFIX."faq_categories SET faqcatname='$faqcatname', description='$description' WHERE faqcatID='$faqcatID' ");
 		else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) {
@@ -83,7 +83,7 @@ if(isset($_GET['action'])) {
     eval ("\$addbbcode = \"".gettemplate("addbbcode", "html", "admin")."\";");
     eval ("\$addflags = \"".gettemplate("flags_admin", "html", "admin")."\";");
     
-    echo'<h1>&curren; <a href="admincenter.php?site=faqcategories" class="white">'.$_language->module['faq_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h1>';
+    echo'<h3><a href="admincenter.php?site=faqcategories" class="white">'.$_language->module['faq_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h3>';
     
     echo '<script language="JavaScript" type="text/javascript">
 					<!--
@@ -135,7 +135,7 @@ if(isset($_GET['action'])) {
     eval ("\$addbbcode = \"".gettemplate("addbbcode", "html", "admin")."\";");
     eval ("\$addflags = \"".gettemplate("flags_admin", "html", "admin")."\";");
     
-    echo'<h1>&curren; <a href="admincenter.php?site=faqcategories" class="white">'.$_language->module['faq_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h1>';
+    echo'<h3><a href="admincenter.php?site=faqcategories" class="white">'.$_language->module['faq_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h3>';
 
     echo '<script language="JavaScript" type="text/javascript">
 					<!--
@@ -174,7 +174,7 @@ if(isset($_GET['action'])) {
 
 else {
 	
-  echo '<h1>&curren; '.$_language->module['faq_categories'].'</h1>';
+  echo '<h3>'.$_language->module['faq_categories'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=faqcategories&amp;action=addcat\');return document.MM_returnValue" value="'.$_language->module['new_category'].'" /><br /><br />';	
 

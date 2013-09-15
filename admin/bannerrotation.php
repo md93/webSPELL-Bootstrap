@@ -36,7 +36,7 @@ else $action = '';
 
 if($action=="add") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=bannerrotation" class="white">'.$_language->module['bannerrotation'].'</a> &raquo; '.$_language->module['add_banner'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=bannerrotation" class="white">'.$_language->module['bannerrotation'].'</a> &raquo; '.$_language->module['add_banner'].'</h3>';
 	
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
@@ -70,7 +70,7 @@ if($action=="add") {
 
 elseif($action=="edit") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=bannerrotation" class="white">'.$_language->module['bannerrotation'].'</a> &raquo; '.$_language->module['edit_banner'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=bannerrotation" class="white">'.$_language->module['bannerrotation'].'</a> &raquo; '.$_language->module['edit_banner'].'</h3>';
 
 	$ds=mysql_fetch_array(safe_query("SELECT * FROM ".PREFIX."bannerrotation WHERE bannerID='".$_GET["bannerID"]."'"));
 	if(file_exists($filepath.$ds['bannerID'].'.gif'))	$pic='<img src="../images/bannerrotation/'.$ds['bannerID'].'.gif" border="0" alt="'.$ds['banner'].'" />';
@@ -147,7 +147,7 @@ elseif(isset($_POST["save"])) {
 				}
 			} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 		} else echo'<b>'.$_language->module['fill_correctly'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST["saveedit"])) {
@@ -181,7 +181,7 @@ elseif(isset($_POST["saveedit"])) {
 				} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 			}
 		} else echo'<b>'.$_language->module['fill_correctly'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET["delete"])) {
@@ -195,12 +195,12 @@ elseif(isset($_GET["delete"])) {
 		} else {
 			redirect("admincenter.php?site=bannerrotation","",0);
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 else {
 
-  echo'<h1>&curren; '.$_language->module['bannerrotation'].'</h1>';
+  echo'<h3>'.$_language->module['bannerrotation'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=bannerrotation&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_banner'].'" /><br /><br />';
   

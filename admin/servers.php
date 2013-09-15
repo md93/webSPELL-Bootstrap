@@ -33,14 +33,14 @@ if(isset($_POST['save'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		safe_query("INSERT INTO ".PREFIX."servers ( name, ip, game, info ) values( '".$_POST['name']."', '".$_POST['serverip']."', '".$_POST['game']."', '".$_POST['message']."' ) ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		safe_query("UPDATE ".PREFIX."servers SET name='".$_POST['name']."', ip='".$_POST['serverip']."', game='".$_POST['game']."', info='".$_POST['message']."' WHERE serverID='".$_POST['serverID']."'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['sort'])) {
@@ -52,14 +52,14 @@ elseif(isset($_POST['sort'])) {
 				safe_query("UPDATE ".PREFIX."servers SET sort='$sorter[1]' WHERE serverID='$sorter[0]' ");
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delete'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."servers WHERE serverID='".$_GET['serverID']."'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 $games='';
@@ -81,7 +81,7 @@ if($action=="add") {
 	eval ("\$addbbcode = \"".gettemplate("addbbcode", "html", "admin")."\";");
   eval ("\$addflags = \"".gettemplate("flags_admin", "html", "admin")."\";");
 	
-  echo '<h1>&curren; <a href="admincenter.php?site=servers" class="white">'.$_language->module['servers'].'</a> &raquo; '.$_language->module['add_server'].'</h1>';
+  echo '<h3><a href="admincenter.php?site=servers" class="white">'.$_language->module['servers'].'</a> &raquo; '.$_language->module['add_server'].'</h3>';
 
   echo '<script language="JavaScript" type="text/javascript">
 					<!--
@@ -127,7 +127,7 @@ if($action=="add") {
 
 elseif($action=="edit") {
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=servers" class="white">'.$_language->module['servers'].'</a> &raquo; '.$_language->module['edit_server'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=servers" class="white">'.$_language->module['servers'].'</a> &raquo; '.$_language->module['edit_server'].'</h3>';
 
   $CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
@@ -189,7 +189,7 @@ elseif($action=="edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['servers'].'</h1>';
+  echo'<h3>'.$_language->module['servers'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=servers&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_server'].'" /><br /><br />';
 

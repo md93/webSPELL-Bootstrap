@@ -29,7 +29,7 @@ $_language->read_module('about');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['about'].'</h1>';
+echo'<h3>'.$_language->module['about'].'</h3>';
 
 if(isset($_POST['submit']) != "") {
 	$about = $_POST['message'];
@@ -38,7 +38,7 @@ if(isset($_POST['submit']) != "") {
 		if(mysql_num_rows(safe_query("SELECT * FROM ".PREFIX."about")))	safe_query("UPDATE ".PREFIX."about SET about='".$about."'");
 		else safe_query("INSERT INTO ".PREFIX."about (about) values( '".$about."') ");
 		redirect("admincenter.php?site=about", "", 0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 else {
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."about");

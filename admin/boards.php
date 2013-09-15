@@ -43,7 +43,7 @@ if(isset($_POST['savemods'])) {
 			}
 		} 
 		else {
-			echo $_language->module['transaction_invalid'];
+			echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 		}
 	}
 	else{
@@ -52,7 +52,7 @@ if(isset($_POST['savemods'])) {
 			safe_query("DELETE FROM ".PREFIX."forum_moderators WHERE boardID='$boardID'");
 		}
 		else {
-			echo $_language->module['transaction_invalid'];
+			echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 		}
 	}
 }
@@ -69,7 +69,7 @@ elseif(isset($_GET['delete'])) {
 			WHERE `topics`.`boardID` = '".$boardID."'");
 		safe_query("DELETE FROM ".PREFIX."forum_boards WHERE boardID='$boardID' ");
 		safe_query("DELETE FROM ".PREFIX."forum_moderators WHERE boardID='$boardID' ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delcat'])) {
@@ -78,7 +78,7 @@ elseif(isset($_GET['delcat'])) {
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("UPDATE ".PREFIX."forum_boards SET category='0' WHERE category='$catID' ");
 		safe_query("DELETE FROM ".PREFIX."forum_categories WHERE catID='$catID' ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['sortieren'])) {
@@ -115,7 +115,7 @@ elseif(isset($_POST['save'])) {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
   		safe_query("INSERT INTO ".PREFIX."forum_boards ( category, name, info, readgrps, writegrps, sort )
   values( '$kath', '$name', '$boardinfo', '$readgrps', '$writegrps', '1' )");
-  	} else echo $_language->module['transaction_invalid'];
+  	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['savecat'])) {
@@ -126,7 +126,7 @@ elseif(isset($_POST['savecat'])) {
 	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		safe_query("INSERT INTO ".PREFIX."forum_categories ( readgrps, name, info, sort ) values( '$readgrps', '$catname', '$catinfo', '1' )");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -147,7 +147,7 @@ elseif(isset($_POST['saveedit'])) {
 	             readgrps='$readgrps',
 	             writegrps='$writegrps' WHERE boardID='$boardID'");
 		safe_query("UPDATE ".PREFIX."forum_topics SET readgrps='$readgrps', writegrps='$writegrps' WHERE boardID='$boardID'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveeditcat'])) {
@@ -159,7 +159,7 @@ elseif(isset($_POST['saveeditcat'])) {
 	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		safe_query("UPDATE ".PREFIX."forum_categories SET readgrps='$readgrps', name='$catname', info='$catinfo' WHERE catID='$catID' ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -167,7 +167,7 @@ else $action = '';
 
 if($action=="mods") {
 
-	echo'<h1>&curren; <a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['moderators'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['moderators'].'</h3>';
   
   $boardID = $_GET['boardID'];
 
@@ -199,7 +199,7 @@ if($action=="mods") {
 
 elseif($action=="add") {
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['add_board'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['add_board'].'</h3>';
   
   $ergebnis=safe_query("SELECT * FROM ".PREFIX."forum_categories ORDER BY sort");
 	$cats='<select name="kath">';
@@ -269,7 +269,7 @@ elseif($action=="add") {
 
 elseif($action=="edit") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['edit_board'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['edit_board'].'</h3>';
   
   $boardID = $_GET['boardID'];
 
@@ -362,7 +362,7 @@ elseif($action=="edit") {
 
 elseif($action=="addcat") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['add_category'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['add_category'].'</h3>';
 	
   $sql = safe_query("SELECT * FROM ".PREFIX."forum_groups");
 	$groups = '<select id="readgrps" name="readgrps[]" multiple="multiple" size="10">
@@ -411,7 +411,7 @@ elseif($action=="addcat") {
 
 elseif($action=="editcat") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['edit_category'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=boards" class="white">'.$_language->module['boards'].'</a> &raquo; '.$_language->module['edit_category'].'</h3>';
 
 	$catID = $_GET['catID'];
 
@@ -469,7 +469,7 @@ elseif($action=="editcat") {
 
 else {
 
-	echo'<h1>&curren; '.$_language->module['boards'].'</h1>';
+	echo'<h3>'.$_language->module['boards'].'</h3>';
 
 	echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=boards&amp;action=addcat\');return document.MM_returnValue" value="'.$_language->module['new_category'].'" />
   <input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=boards&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_board'].'" /><br /><br />';	

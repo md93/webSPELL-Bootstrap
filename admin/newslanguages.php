@@ -35,7 +35,7 @@ if(isset($_POST['save'])) {
 		if(checkforempty(Array('language', 'lang','alt'))) {
 			safe_query("INSERT INTO ".PREFIX."news_languages ( language, lang, alt ) values( '".$_POST['language']."', '".$_POST['lang']."', '".$_POST['alt']."' ) ");
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -44,14 +44,14 @@ elseif(isset($_POST['saveedit'])) {
 		if(checkforempty(Array('language', 'lang', 'alt'))) {
 			safe_query("UPDATE ".PREFIX."news_languages SET language='".$_POST['language']."', lang='".$_POST['lang']."', alt='".$_POST['alt']."' WHERE langID='".$_POST['langID']."'");
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delete'])) {
  	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."news_languages WHERE langID='".$_GET['langID']."'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 $langs='';
@@ -70,7 +70,7 @@ if($action=="add") {
   $flag = '[flag][/flag]';
 $country = flags($flag,'admin');
 $country = str_replace("<img","<img id='getcountry'",$country);
-  echo'<h1>&curren; <a href="admincenter.php?site=newslanguages" class="white">'.$_language->module['news_languages'].'</a> &raquo; '.$_language->module['add_language'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=newslanguages" class="white">'.$_language->module['news_languages'].'</a> &raquo; '.$_language->module['add_language'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=newslanguages">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -99,7 +99,7 @@ elseif($action=="edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=newslanguages" class="white">'.$_language->module['news_languages'].'</a> &raquo; '.$_language->module['edit_language'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=newslanguages" class="white">'.$_language->module['news_languages'].'</a> &raquo; '.$_language->module['edit_language'].'</h3>';
 
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."news_languages WHERE langID='".$_GET['langID']."'");
 	$ds=mysql_fetch_array($ergebnis);
@@ -133,7 +133,7 @@ $country = str_replace("<img","<img id='getcountry'",$country);
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['news_languages'].'</h1>';
+  echo'<h3>'.$_language->module['news_languages'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=newslanguages&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_language'].'" /><br /><br />';
 

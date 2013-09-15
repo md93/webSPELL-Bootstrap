@@ -29,7 +29,7 @@ $_language->read_module('newsletter');
 
 if(!isuseradmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['newsletter'].'</h1>';
+echo'<h3>'.$_language->module['newsletter'].'</h3>';
 
 if(isset($_POST['send']) || isset($_POST['testen'])) {
 	$CAPCLASS = new Captcha;
@@ -147,7 +147,7 @@ hr { margin: 0px; }
 		if($success) echo '<b>'.$receptionists.'</b><br /><br />'.implode(", ",$bcc);
 		else echo'<b>'.$error_send.'</b>';
 		redirect("admincenter.php?site=newsletter", "", 5);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 else {
  	$CAPCLASS = new Captcha;

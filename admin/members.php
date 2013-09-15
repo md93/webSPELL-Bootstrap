@@ -41,7 +41,7 @@ if(isset($_POST['sortieren'])) {
 				}
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['delete'])) {
@@ -53,7 +53,7 @@ if(isset($_GET['delete'])) {
 		if($squads<2 AND !issuperadmin($id)) safe_query("DELETE FROM ".PREFIX."user_groups WHERE userID='$id'");
 	
 		safe_query("DELETE FROM ".PREFIX."squads_members WHERE userID='$id' AND squadID='$squadID'");
-	} else echo $_language->module['transaction_invalid'];		
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';		
 }
 
 if(isset($_POST['saveedit'])) {
@@ -135,12 +135,12 @@ if(isset($_POST['saveedit'])) {
 		if(issuperadmin($userID)) safe_query("UPDATE ".PREFIX."user_groups SET super='".isset($_POST['superadmin'])."' WHERE userID='$id'");
 		}
 	  	else redirect('admincenter.php?site=members',$_language->module['error_own_rights'], 3);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action']) and $_GET['action'] == "edit") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=members" class="white">'.$_language->module['members'].'</a> &raquo; '.$_language->module['edit_member'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=members" class="white">'.$_language->module['members'].'</a> &raquo; '.$_language->module['edit_member'].'</h3>';
 
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
@@ -343,7 +343,7 @@ if(isset($_GET['action']) and $_GET['action'] == "edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['members'].'</h1>';
+  echo'<h3>'.$_language->module['members'].'</h3>';
   $CAPCLASS = new Captcha;
   $CAPCLASS->create_transaction();
   $hash = $CAPCLASS->get_hash();

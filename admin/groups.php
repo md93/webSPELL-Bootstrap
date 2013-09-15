@@ -40,12 +40,12 @@ if($action=="delete") {
 		safe_query("DELETE FROM ".PREFIX."forum_groups WHERE fgrID='".$_GET['fgrID']."'");
 		
   		redirect("admincenter.php?site=groups","",0);
-  	} else echo $_language->module['transaction_invalid'];
+  	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif($action=="add") {
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=groups" class="white">'.$_language->module['groups'].'</a> &raquo; '.$_language->module['add_group'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=groups" class="white">'.$_language->module['groups'].'</a> &raquo; '.$_language->module['add_group'].'</h3>';
 
   $CAPCLASS = new Captcha;
   $CAPCLASS->create_transaction();
@@ -77,7 +77,7 @@ elseif($action=="save") {
 		}
 	
 		redirect("admincenter.php?site=groups","",0);
-	} else echo $_language->module['transaction_invalid'];	
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';	
 }
 
 elseif($action=="saveedit") {
@@ -86,12 +86,12 @@ elseif($action=="saveedit") {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		safe_query("UPDATE ".PREFIX."forum_groups SET name='".$name."' WHERE fgrID='".$_POST['fgrID']."'");	
   		redirect("admincenter.php?site=groups","",0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif($action=="edit") {
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=groups" class="white">'.$_language->module['groups'].'</a> &raquo; '.$_language->module['edit_group'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=groups" class="white">'.$_language->module['groups'].'</a> &raquo; '.$_language->module['edit_group'].'</h3>';
   
   if(!$_GET['fgrID']) die('<b>'.$_language->module['error_groupid'].'</b><br /><br /><a href="admincenter.php?site=groups">&laquo; '.$_language->module['back'].'</a>');
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."forum_groups WHERE fgrID='".$_GET['fgrID']."'");
@@ -117,7 +117,7 @@ elseif($action=="edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['groups'].'</h1>';
+  echo'<h3>'.$_language->module['groups'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=groups&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_group'].'" /><br /><br />';
 

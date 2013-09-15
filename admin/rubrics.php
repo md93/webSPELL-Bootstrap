@@ -60,7 +60,7 @@ if(isset($_POST['save'])) {
 				}
 			}
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -94,7 +94,7 @@ elseif(isset($_POST['saveedit'])) {
 				}
 			}
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delete'])) {
@@ -106,7 +106,7 @@ elseif(isset($_GET['delete'])) {
 		if(file_exists($filepath.$rubricID.'.gif')) @unlink($filepath.$rubricID.'.gif');
 		if(file_exists($filepath.$rubricID.'.jpg')) @unlink($filepath.$rubricID.'.jpg');
 		if(file_exists($filepath.$rubricID.'.png')) @unlink($filepath.$rubricID.'.png');
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -116,7 +116,7 @@ if($action=="add") {
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
-  echo'<h1>&curren; <a href="admincenter.php?site=rubrics" class="white">'.$_language->module['news_rubrics'].'</a> &raquo; '.$_language->module['add_rubric'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=rubrics" class="white">'.$_language->module['news_rubrics'].'</a> &raquo; '.$_language->module['add_rubric'].'</h3>';
 
 	echo'<form method="post" action="admincenter.php?site=rubrics" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -140,7 +140,7 @@ elseif($action=="edit") {
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
-  echo'<h1>&curren; <a href="admincenter.php?site=rubrics" class="white">'.$_language->module['news_rubrics'].'</a> &raquo; '.$_language->module['edit_rubric'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=rubrics" class="white">'.$_language->module['news_rubrics'].'</a> &raquo; '.$_language->module['edit_rubric'].'</h3>';
 
 	$rubricID = $_GET['rubricID'];
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."news_rubrics WHERE rubricID='$rubricID'");
@@ -170,7 +170,7 @@ elseif($action=="edit") {
 
 else {
 
-  echo'<h1>&curren; '.$_language->module['news_rubrics'].'</h1>';
+  echo'<h3>'.$_language->module['news_rubrics'].'</h3>';
 
 	echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=rubrics&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_rubric'].'" /><br /><br />';
 

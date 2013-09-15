@@ -29,7 +29,7 @@ $_language->read_module('settings');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['settings'].'</h1>';
+echo'<h3>'.$_language->module['settings'].'</h3>';
 
 if(isset($_POST['submit'])) {
  	$CAPCLASS = new Captcha;

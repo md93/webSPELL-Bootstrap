@@ -34,7 +34,7 @@ if(isset($_GET['delete'])) {
 	$CAPCLASS = new Captcha;
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."contact WHERE contactID='$contactID'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['sortieren'])) {
@@ -47,7 +47,7 @@ elseif(isset($_POST['sortieren'])) {
 				safe_query("UPDATE ".PREFIX."contact SET sort='$sorter[1]' WHERE contactID='$sorter[0]' ");
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['save'])) {
@@ -59,7 +59,7 @@ elseif(isset($_POST['save'])) {
 			safe_query("INSERT INTO ".PREFIX."contact ( name, email, sort )
 	            values( '$name', '$email', '1' )");
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -71,7 +71,7 @@ elseif(isset($_POST['saveedit'])) {
 		if(checkforempty(Array('name', 'email'))) {
 			safe_query("UPDATE ".PREFIX."contact SET name='$name', email='$email' WHERE contactID='$contactID' ");
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) {
@@ -80,7 +80,7 @@ if(isset($_GET['action'])) {
     $CAPCLASS->create_transaction();
     $hash = $CAPCLASS->get_hash();
     
-    echo'<h1>&curren; <a href="admincenter.php?site=contact" class="white">'.$_language->module['contact'].'</a> &raquo; '.$_language->module['add_contact'].'</h1>';
+    echo'<h3><a href="admincenter.php?site=contact" class="white">'.$_language->module['contact'].'</a> &raquo; '.$_language->module['add_contact'].'</h3>';
     
     echo '<form method="post" action="admincenter.php?site=contact" name="post">
     <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -110,7 +110,7 @@ if(isset($_GET['action'])) {
     $CAPCLASS->create_transaction();
     $hash = $CAPCLASS->get_hash();
     
-    echo'<h1>&curren; <a href="admincenter.php?site=contact" class="white">'.$_language->module['contact'].'</a> &raquo; '.$_language->module['edit_contact'].'</h1>';
+    echo'<h3><a href="admincenter.php?site=contact" class="white">'.$_language->module['contact'].'</a> &raquo; '.$_language->module['edit_contact'].'</h3>';
 
     echo '<form method="post" action="admincenter.php?site=contact" name="post">
     <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -132,7 +132,7 @@ if(isset($_GET['action'])) {
 
 else {
 	
-  echo '<h1>&curren; '.$_language->module['contact'].'</h1>';
+  echo '<h3>'.$_language->module['contact'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=contact&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_contact'].'" /><br /><br />';	
 

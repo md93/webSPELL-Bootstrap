@@ -29,7 +29,7 @@ $_language->read_module('history');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['history'].'</h1>';
+echo'<h3>'.$_language->module['history'].'</h3>';
 
 if(isset($_POST['submit'])) {
 	$history = $_POST['message'];
@@ -38,7 +38,7 @@ if(isset($_POST['submit'])) {
 		if(mysql_num_rows(safe_query("SELECT * FROM ".PREFIX."history")))
 			safe_query("UPDATE ".PREFIX."history SET history='".$history."'");
 		else safe_query("INSERT INTO ".PREFIX."history (history) values( '".$history."') ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."history");
 	$ds=mysql_fetch_array($ergebnis);

@@ -83,11 +83,11 @@ $get = safe_query("SELECT DATABASE()");
 $ret = mysql_fetch_array($get);
 $db = $ret[0];
 
-echo '<h1>&curren; '.$_language->module['welcome'].'</h1>';
+echo '<h3>'.$_language->module['welcome'].'</h3>';
 echo $_language->module['hello'].'&nbsp;'.$username.',&nbsp;'.$_language->module['last_login'].'&nbsp;'.$lastlogin.'.<br /><br />';
 echo $_language->module['welcome_message']; ?>
 <br /><iframe src="http://update.webspell.org/index.php?new&amp;v=<?php echo $version;?>&amp;h=<?php echo $_SERVER['SERVER_NAME'];?>" height="70" frameborder="0" scrolling="no" width="100%"></iframe><br/><br/>
-<h1>&curren; <?php echo $_language->module['serverinfo']; ?></h1>
+<h3><?php echo $_language->module['serverinfo']; ?></h3>
 <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD">
   <tr>
     <td class="title" colspan="4"><b><?php echo $_language->module['serverinfo']; ?></b></td>

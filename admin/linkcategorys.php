@@ -34,7 +34,7 @@ if(isset($_POST['save'])) {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		if(checkforempty(Array('name'))) safe_query("INSERT INTO ".PREFIX."links_categorys ( name ) values( '".$_POST['name']."' ) ");
 		else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -42,7 +42,7 @@ elseif(isset($_POST['saveedit'])) {
 	if($CAPCLASS->check_captcha(0, $_POST['captcha_hash'])) {
 		if(checkforempty(Array('name'))) safe_query("UPDATE ".PREFIX."links_categorys SET name='".$_POST['name']."' WHERE linkcatID='".$_POST['linkcatID']."'");
 		else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET['delete'])) {
@@ -50,7 +50,7 @@ elseif(isset($_GET['delete'])) {
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."links_categorys WHERE linkcatID='".$_GET['linkcatID']."'");
 		safe_query("DELETE FROM ".PREFIX."links WHERE linkcatID='".$_GET['linkcatID']."'");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -61,7 +61,7 @@ if($action=="add") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=linkcategorys" class="white">'.$_language->module['link_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=linkcategorys" class="white">'.$_language->module['link_categories'].'</a> &raquo; '.$_language->module['add_category'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=linkcategorys">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -82,7 +82,7 @@ elseif($action=="edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=linkcategorys" class="white">'.$_language->module['link_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=linkcategorys" class="white">'.$_language->module['link_categories'].'</a> &raquo; '.$_language->module['edit_category'].'</h3>';
 
 	$ergebnis=safe_query("SELECT * FROM ".PREFIX."links_categorys WHERE linkcatID='".$_GET['linkcatID']."'");
 	$ds=mysql_fetch_array($ergebnis);
@@ -103,7 +103,7 @@ elseif($action=="edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['link_categories'].'</h1>';
+  echo'<h3>'.$_language->module['link_categories'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=linkcategorys&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_category'].'" /><br /><br />';
 

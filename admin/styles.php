@@ -29,7 +29,7 @@ $_language->read_module('styles');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['styles'].'</h1>';
+echo'<h3>'.$_language->module['styles'].'</h3>';
 
 if(isset($_POST['submit'])) {
  	$CAPCLASS = new Captcha;
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) {
 			fclose($fp);
 			redirect("admincenter.php?site=styles","",0);
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 else {

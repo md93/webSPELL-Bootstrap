@@ -39,7 +39,7 @@ if($action=="add") {
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
-  echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=countries" class="white">'.$_language->module['countries'].'</a> &raquo; '.$_language->module['add_country'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=countries" class="white">'.$_language->module['countries'].'</a> &raquo; '.$_language->module['add_country'].'</h3>';
 	
 	echo'<form method="post" action="admincenter.php?site=countries" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -71,7 +71,7 @@ elseif($action=="edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=countries" class="white">'.$_language->module['countries'].'</a> &raquo; '.$_language->module['edit_country'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=countries" class="white">'.$_language->module['countries'].'</a> &raquo; '.$_language->module['edit_country'].'</h3>';
 
 	echo'<form method="post" action="admincenter.php?site=countries" enctype="multipart/form-data">
   <input type="hidden" name="countryID" value="'.$ds['countryID'].'" />
@@ -118,7 +118,7 @@ elseif(isset($_POST['save'])) {
 				}
 			} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 		} else echo'<b>'.$_language->module['fill_correctly'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];	
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';	
 }
 
 elseif(isset($_POST["saveedit"])) {
@@ -147,7 +147,7 @@ elseif(isset($_POST["saveedit"])) {
 				} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 			}
 		} else echo'<b>'.$_language->module['fill_correctly'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET["delete"])) {
@@ -155,12 +155,12 @@ elseif(isset($_GET["delete"])) {
 	if($CAPCLASS->check_captcha(0, $_GET['captcha_hash'])) {
 		safe_query("DELETE FROM ".PREFIX."countries WHERE countryID='".$_GET["countryID"]."'");
 		redirect("admincenter.php?site=countries","",0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 else {
 	
-  echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; '.$_language->module['countries'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; '.$_language->module['countries'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=countries&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_country'].'" /><br /><br />';
   

@@ -38,7 +38,7 @@ if(isset($_GET['delete'])) {
 		if(file_exists($filepath.$partnerID.'.gif')) unlink($filepath.$partnerID.'.gif');
 		if(file_exists($filepath.$partnerID.'.jpg')) unlink($filepath.$partnerID.'.jpg');
 		if(file_exists($filepath.$partnerID.'.png')) unlink($filepath.$partnerID.'.png');
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['sortieren'])) {
@@ -49,7 +49,7 @@ elseif(isset($_POST['sortieren'])) {
 			$sorter=explode("-", $sortstring);
 			safe_query("UPDATE ".PREFIX."partners SET sort='$sorter[1]' WHERE partnerID='$sorter[0]' ");
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['save'])) {
@@ -98,7 +98,7 @@ elseif(isset($_POST['save'])) {
 				die('<b>'.$error.'</b><br /><br /><a href="admincenter.php?site=partners&amp;action=edit&amp;partnerID='.$id.'">&laquo; '.$_language->module['back'].'</a>');
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST['saveedit'])) {
@@ -146,7 +146,7 @@ elseif(isset($_POST['saveedit'])) {
 			}
 		}
 		safe_query("UPDATE ".PREFIX."partners SET name='$name', url='$url', displayed='".$displayed."' WHERE partnerID='$partnerID' ");
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -157,7 +157,7 @@ if($action=="add") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
 	
-	echo'<h1>&curren; <a href="admincenter.php?site=partners" class="white">'.$_language->module['partners'].'</a> &raquo; '.$_language->module['add_partner'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=partners" class="white">'.$_language->module['partners'].'</a> &raquo; '.$_language->module['add_partner'].'</h3>';
 
 	echo'<form method="post" action="admincenter.php?site=partners" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -190,7 +190,7 @@ elseif($action=="edit") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=partners" class="white">'.$_language->module['partners'].'</a> &raquo; '.$_language->module['edit_partner'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=partners" class="white">'.$_language->module['partners'].'</a> &raquo; '.$_language->module['edit_partner'].'</h3>';
   
   $partnerID = $_GET['partnerID'];
   $ergebnis=safe_query("SELECT * FROM ".PREFIX."partners WHERE partnerID='$partnerID'");
@@ -231,7 +231,7 @@ elseif($action=="edit") {
 
 else {
 	
-  echo'<h1>&curren; '.$_language->module['partners'].'</h1>';
+  echo'<h3>'.$_language->module['partners'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=partners&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_partner'].'" /><br /><br />';
 

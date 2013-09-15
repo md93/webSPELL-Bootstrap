@@ -29,7 +29,7 @@ $_language->read_module('update');
 
 if(!ispageadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo'<h1>&curren; '.$_language->module['webspell_update'].'</h1>';
+echo'<h3>'.$_language->module['webspell_update'].'</h3>';
 
 //Where to get the newest WebSPELL from? (standard: http://update.webspell.org/)
 $updateserver = "http://update.webspell.org/";

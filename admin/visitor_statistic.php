@@ -29,7 +29,7 @@ $_language->read_module('visitor_statistic');
 
 if(!isanyadmin($userID) OR mb_substr(basename($_SERVER['REQUEST_URI']),0,15) != "admincenter.php") die($_language->module['access_denied']);
 
-echo '<h1>&curren; '.$_language->module['visitor_stats_overall'].'</h1>';
+echo '<h3>'.$_language->module['visitor_stats_overall'].'</h3>';
 
 $time = time();
 $date = date("d.m.Y", $time);
@@ -121,7 +121,7 @@ echo '<table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#D
 </table>
 <br /><br />';
 
-echo '<h1>&curren; '.$_language->module['visitor_stats_graphics'].'</h1>';
+echo '<h3>'.$_language->module['visitor_stats_graphics'].'</h3>';
 
 if(isset($_SESSION['size_x'])) {
 	$size_x = $_SESSION['size_x'];
@@ -215,8 +215,8 @@ function update_count(new_days, new_months)
 		document.getElementById('count_months').value = 2;
 	}
 	
-	document.getElementById('last_days_h2').innerHTML = '&curren; <?php echo $_language->module['last']; ?> ' + count_days + ' <?php echo $_language->module['days']; ?>';
-	document.getElementById('last_months_h2').innerHTML = '&curren; <?php echo $_language->module['last']; ?> ' + count_months + ' <?php echo $_language->module['months']; ?>';
+	document.getElementById('last_days_h2').innerHTML = '<?php echo $_language->module['last']; ?> ' + count_days + ' <?php echo $_language->module['days']; ?>';
+	document.getElementById('last_months_h2').innerHTML = '<?php echo $_language->module['last']; ?> ' + count_months + ' <?php echo $_language->module['months']; ?>';
 	
 	document.getElementById('last_days').src = 'visitor_statistic_image.php?last=days&count=' + count_days + '&size_x=' + size_x + '&size_y=' + size_y;
 	document.getElementById('last_months').src = 'visitor_statistic_image.php?last=months&count=' + count_months + '&size_x=' + size_x + '&size_y=' + size_y;
@@ -234,10 +234,10 @@ function update_count(new_days, new_months)
 <p><b><?php echo $_language->module['show_year_month']; ?>:</b></p>
 <input type="text" id="year" style="width:40px;" /> <input type="button" onclick="display_stat(document.getElementById('year').value, 0);" value="<?php echo $_language->module['show']; ?>" /> <?php echo $_language->module['yyyy']; ?><br /><br />
 <input type="text" id="year2" style="width:40px;" />.<input type="text" id="month" style="width:20px;" /> <input type="button" onclick="display_stat(document.getElementById('year2').value, document.getElementById('month').value);" value="<?php echo $_language->module['show']; ?>" /> <?php echo $_language->module['yyyy_mm']; ?><br /><br />
-<h1 id="h2" style="display:none;"></h1>
+<h3 id="h2" style="display:none;"></h3>
 <img id="img" style="display:none;" src="" alt="" />
 
-<h1 id="last_days_h2">&curren; <?php echo $_language->module['last']; ?> <?php echo $count_days; ?> <?php echo $_language->module['days']; ?></h1>
+<h3 id="last_days_h2"><?php echo $_language->module['last']; ?> <?php echo $count_days; ?> <?php echo $_language->module['days']; ?></h3>
 <img id="last_days" src="visitor_statistic_image.php?last=days&amp;count=<?php echo $count_days; ?>" alt="" />
-<h1 id="last_months_h2">&curren; <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?></h1>
+<h3 id="last_months_h2"><?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?></h3>
 <img id="last_months" src="visitor_statistic_image.php?last=months&amp;count=<?php echo $count_months; ?>" alt="" />

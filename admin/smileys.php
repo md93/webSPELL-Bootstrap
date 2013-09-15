@@ -39,7 +39,7 @@ if($action=="add") {
 	$CAPCLASS->create_transaction();
 	$hash = $CAPCLASS->get_hash();
   
-  echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=smileys" class="white">'.$_language->module['smilies'].'</a> &raquo; '.$_language->module['add_smiley'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=smileys" class="white">'.$_language->module['smilies'].'</a> &raquo; '.$_language->module['add_smiley'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=smileys" enctype="multipart/form-data">
 	<table width="100%" border="0" cellspacing="1" cellpadding="3">
@@ -70,7 +70,7 @@ elseif($action=="edit") {
 	$ds=mysql_fetch_array(safe_query("SELECT * FROM ".PREFIX."smileys WHERE smileyID='".$_GET["smileyID"]."'"));
 	$pic='<img src="../images/smileys/'.$ds['name'].'" border="0" alt="'.getinput($ds['alt']).'" />';
 
-	echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=smileys" class="white">'.$_language->module['smilies'].'</a> &raquo; '.$_language->module['edit_smiley'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; <a href="admincenter.php?site=smileys" class="white">'.$_language->module['smilies'].'</a> &raquo; '.$_language->module['edit_smiley'].'</h3>';
   
   echo'<form method="post" action="admincenter.php?site=smileys" enctype="multipart/form-data">
 		<input type="hidden" name="smileyID" value="'.$ds['smileyID'].'" />
@@ -118,7 +118,7 @@ elseif(isset($_POST["save"])) {
 				}
 			} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 		} else echo'<b>'.$_language->module['fill_form'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST["saveedit"])) {
@@ -146,7 +146,7 @@ elseif(isset($_POST["saveedit"])) {
 				} else echo'<b>'.$_language->module['format_incorrect'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
 			}
 		} else echo'<b>'.$_language->module['fill_form'].'</b><br /><br /><a href="javascript:history.back()">&laquo; '.$_language->module['back'].'</a>';
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET["delete"])) {
@@ -158,7 +158,7 @@ elseif(isset($_GET["delete"])) {
 }
 
 else {
-	echo'<h1>&curren; <a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; '.$_language->module['smilies'].'</h1>';
+	echo'<h3><a href="admincenter.php?site=icons" class="white">'.$_language->module['icons'].'</a> &raquo; '.$_language->module['smilies'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=smileys&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_smiley'].'" /><br /><br />';
   

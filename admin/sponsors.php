@@ -36,7 +36,7 @@ else $action = '';
 
 if($action=="add") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=sponsors" class="white">'.$_language->module['sponsors'].'</a> &raquo; '.$_language->module['add_sponsor'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=sponsors" class="white">'.$_language->module['sponsors'].'</a> &raquo; '.$_language->module['add_sponsor'].'</h3>';
 	
 	$CAPCLASS = new Captcha;
 	$CAPCLASS->create_transaction();
@@ -105,7 +105,7 @@ if($action=="add") {
 
 elseif($action=="edit") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=sponsors" class="white">'.$_language->module['sponsors'].'</a> &raquo; '.$_language->module['edit_sponsor'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=sponsors" class="white">'.$_language->module['sponsors'].'</a> &raquo; '.$_language->module['edit_sponsor'].'</h3>';
 
 	$ds=mysql_fetch_array(safe_query("SELECT * FROM ".PREFIX."sponsors WHERE sponsorID='".$_GET["sponsorID"]."'"));
 	if(!empty($ds['banner'])) $pic='<img src="'.$filepath.$ds['banner'].'" border="0" alt="" />';
@@ -204,7 +204,7 @@ elseif(isset($_POST['sortieren'])) {
 				redirect("admincenter.php?site=sponsors","",0);
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST["save"])) {
@@ -288,7 +288,7 @@ elseif(isset($_POST["save"])) {
 			}
 		}
 		redirect("admincenter.php?site=sponsors","",0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_POST["saveedit"])) {
@@ -376,7 +376,7 @@ elseif(isset($_POST["saveedit"])) {
 			}
 		}
 		redirect("admincenter.php?site=sponsors","",0);
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 elseif(isset($_GET["delete"])) {
@@ -393,12 +393,12 @@ elseif(isset($_GET["delete"])) {
 		} else {
 			redirect("admincenter.php?site=sponsors","",0);
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 else {
 
-  echo'<h1>&curren; '.$_language->module['sponsors'].'</h1>';
+  echo'<h3>'.$_language->module['sponsors'].'</h3>';
   
   echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=sponsors&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_sponsor'].'" /><br /><br />';
   

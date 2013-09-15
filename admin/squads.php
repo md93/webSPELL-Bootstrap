@@ -59,7 +59,7 @@ if(isset($_GET['delete'])) {
 		if(file_exists($filepath.$squadID.'_small.gif')) unlink($filepath.$squadID.'_small.gif');
 		if(file_exists($filepath.$squadID.'_small.jpg')) unlink($filepath.$squadID.'_small.jpg');
 		if(file_exists($filepath.$squadID.'_small.png')) unlink($filepath.$squadID.'_small.png');
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_POST['sortieren'])) {
@@ -72,7 +72,7 @@ if(isset($_POST['sortieren'])) {
 				safe_query("UPDATE ".PREFIX."squads SET sort='$sorter[1]' WHERE squadID='$sorter[0]' ");
 			}
 		}
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_POST['save'])) {
@@ -132,7 +132,7 @@ if(isset($_POST['save'])) {
 			}
 		} else echo $_language->module['information_incomplete'];
 		
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_POST['saveedit'])) {
@@ -191,7 +191,7 @@ if(isset($_POST['saveedit'])) {
 			}
 
 		} else echo $_language->module['information_incomplete'];
-	} else echo $_language->module['transaction_invalid'];
+	} else echo '<div class="alert alert-danger">'.$_language->module['transaction_invalid'].'</div>';
 }
 
 if(isset($_GET['action'])) $action = $_GET['action'];
@@ -199,7 +199,7 @@ else $action = '';
 
 if($action=="add") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['add_squad'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['add_squad'].'</h3>';
 
 	$filepath="../images/squadicons/";
 	$sql=safe_query("SELECT * FROM ".PREFIX."games ORDER BY name");
@@ -275,7 +275,7 @@ if($action=="add") {
 
 elseif($action=="edit") {
 
-  echo'<h1>&curren; <a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['edit_squad'].'</h1>';
+  echo'<h3><a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['edit_squad'].'</h3>';
 
 	$squadID = (int)$_GET['squadID'];
 	$filepath="../images/squadicons/";
@@ -382,9 +382,9 @@ elseif($action=="edit") {
 
 else {
 
-  echo'<h1>&curren; '.$_language->module['squads'].'</h1>';
+  echo'<h3>'.$_language->module['squads'].'</h3>';
 
-	echo'<input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=squads&amp;action=add\');return document.MM_returnValue" value="'.$_language->module['new_squad'].'" /><br /><br />';
+	echo'<a class="btn btn-primary" href="admincenter.php?site=squads&amp;action=add">'.$_language->module['new_squad'].'</a><br><br>';
 
 	echo'<form method="post" action="admincenter.php?site=squads">
   <table width="100%" border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD">
@@ -418,9 +418,17 @@ else {
         <td class="'.$td.'"><a href="../index.php?site=squads&amp;squadID='.$db['squadID'].'" target="_blank">'.getinput($db['name']).'</a></td>
         <td class="'.$td.'" align="center">'.$type.'</td>
         <td class="'.$td.'">'.cleartext($db['info'],1,'admin').'</td>
-        <td class="'.$td.'" align="center"><input type="button" onclick="MM_goToURL(\'parent\',\'admincenter.php?site=squads&amp;action=edit&amp;squadID='.$db['squadID'].'\');return document.MM_returnValue" value="'.$_language->module['edit'].'" />
-        <input type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=squads&amp;delete=true&amp;squadID='.$db['squadID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" /></td>
-        <td class="'.$td.'" align="center"><select name="sort[]">';
+        <td class="'.$td.'" align="center">
+			
+			<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle no-text" data-toggle="dropdown"><span class="caret"></span></button>
+			<ul class="dropdown-menu pull-right" role="menu">
+				<li><a href="#"  onclick="MM_goToURL(\'parent\',\'admincenter.php?site=squads&amp;action=edit&amp;squadID='.$db['squadID'].'\');return document.MM_returnValue">'.$_language->module['edit'].'</a></li>
+				<li><a href="#"  onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=squads&amp;delete=true&amp;squadID='.$db['squadID'].'&amp;captcha_hash='.$hash.'\')">'.$_language->module['delete'].'</a></li>
+			</ul>
+			</div>
+		</td>
+        <td class="'.$td.'" align="center"><select name="sort[]" class="selectpicker">';
         
 			for($j=1; $j<=$anzsquads; $j++) {
 				if($db['sort'] == $j) echo'<option value="'.$db['squadID'].'-'.$j.'" selected="selected">'.$j.'</option>';
@@ -436,7 +444,7 @@ else {
 	}
 	
   echo'<tr>
-      <td class="td_head" colspan="5" align="right"><input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="submit" name="sortieren" value="'.$_language->module['to_sort'].'" /></td>
+      <td class="td_head" colspan="5" align="right"><input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="submit" class="btn btn-primary" name="sortieren" value="'.$_language->module['to_sort'].'" /></td>
     </tr>
   </table>
   </form>';
